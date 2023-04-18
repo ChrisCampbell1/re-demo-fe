@@ -84,7 +84,7 @@ ul li ul:hover{
   .mobileNav{
     display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items: flex-end;
     justify-content: center;
     background-color: aliceblue;
   }
