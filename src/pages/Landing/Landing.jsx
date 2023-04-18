@@ -1,9 +1,20 @@
+// npm modules
+
+// components
+import HeroStatic from '../../components/HeroStatic/HeroStatic'
+import HeroVideo from '../../components/HeroVideo/HeroVideo'
+
+// services
+
+
+// styles
 import styles from './Landing.module.css'
 
 const Landing = ({ user }) => {
   return (
     <main className={styles.container}>
-      <h1>hello, {user ? user.name : 'friend'}</h1>
+      <HeroStatic />
+      <HeroVideo />
     </main>
   )
 }
