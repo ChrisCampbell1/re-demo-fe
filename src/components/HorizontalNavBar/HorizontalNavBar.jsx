@@ -1,5 +1,6 @@
 // npm modules
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
+import { useState,useEffect } from 'react'
 
 
 // components
@@ -15,7 +16,30 @@ import styles from './HorizontalNavBar.module.css'
 
 
 export default function HorizontalNavBar({ user, handleLogout }) {
+  const [display, setDisplay] = useState(false)
+  const [displaySub, setDisplaySub] = useState(false)
+  const [displaySubSub, setDisplaySubSub] = useState(false)
+
+  let location = useLocation()
+  
+  const handleClick = () => {
+    setDisplay(!display)
+  }
+
+  const handleSubClick = () => {
+    setDisplaySub(!displaySub)
+  }
+
+  const handleSubSubClick = () => {
+    setDisplaySubSub(!displaySubSub)
+  }
+
+  useEffect(() => {
+    setDisplay(false)
+  }, [location])
+  
   return (
+    <>
     <nav className={styles.container}>
       {user ?
         <ul>
@@ -44,5 +68,45 @@ export default function HorizontalNavBar({ user, handleLogout }) {
         </ul>
       }
     </nav>
+    <nav className={styles.mobileNav}>
+      <div className={styles.mobileNavTop}>
+        <button className={styles.hamburger} onClick={handleClick}>
+          ☰
+        </button>
+      </div>
+      {display && 
+      <div className={styles.mobileLinks}>
+        {user ?
+          <ul>
+            <li>Welcome, {user.name}</li>
+            <li><NavLink to="/profiles">Profiles</NavLink></li>
+            <li><NavLink to="" onClick={handleLogout}>LOG OUT</NavLink></li>
+            <li><NavLink to="/change-password">Change Password</NavLink></li>
+            <p onClick={handleSubClick}>Metro Areas</p>
+              {displaySub &&
+                <>
+                  <li><NavLink to='#'>Sub Cat 1</NavLink></li>
+                  <li><NavLink to='#'>Sub Cat 2</NavLink></li>
+                  <p onClick={handleSubSubClick}>Denver</p>
+                    {displaySubSub &&
+                      <>
+                        <li><NavLink to='#'>Harvy Park</NavLink></li>
+                        <li><NavLink to='#'>Cap Hill</NavLink></li>
+                        <li><NavLink to='#'>Sunnyside</NavLink></li>
+                      </>
+                    }
+                </>
+              }
+          </ul>
+        :
+          <ul>
+            <li><NavLink to="/login">Log In</NavLink></li>
+            <li><NavLink to="/signup">Sign Up</NavLink></li>
+          </ul>
+        }
+      </div>
+      }
+    </nav>
+    </>
   )
 }

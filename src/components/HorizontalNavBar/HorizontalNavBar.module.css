@@ -69,3 +69,58 @@ ul li ul:hover{
   background-color: coral;
   margin-left: 6rem;
 }
+
+.mobileNav{
+  display: none;
+}
+
+
+
+@media only screen and (max-width: 875px) {
+  .container{
+    display: none;
+  }
+
+  .mobileNav{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+    background-color: aliceblue;
+  }
+
+  .mobileNavTop button{
+    color: red;
+    font-size: 2rem;
+    background-color: unset;
+    border: none;
+    margin-right: 1rem;
+  }
+
+
+  .mobileLinks {
+    position: absolute;
+    top: 2rem;
+    background-color: aliceblue;
+    width: 100vw;
+    text-align: center;
+  }
+
+  .mobileLinks p {
+    margin: 0;
+    background-color: antiquewhite;
+    cursor: pointer;
+  }
+
+  .mobileLinks ul{
+    padding: 0;
+    list-style: none;
+  }
+
+  .mobileLinks a {
+    text-decoration: none;
+    color: black;
+    text-decoration: none;
+  }
+
+}
