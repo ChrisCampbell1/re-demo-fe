@@ -8,7 +8,6 @@
 .heroContent {
   width: 50%;
   height: 100%;
-  /* background-color: black; */
   color: white;
   display: flex;
   flex-direction: column;
@@ -23,8 +22,6 @@
   width: 100%;
   height: 100%;
   z-index: 0;
-  object-fit: contain;
-  /* inset: 0; */
   opacity: 0;
   filter: brightness(.7);
   animation-name: fade-zoom;
@@ -35,6 +32,8 @@
 .bgFade img{
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  object-position: center center;
 }
 
 .bgFade:nth-child(2){

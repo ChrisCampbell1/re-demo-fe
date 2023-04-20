@@ -4,6 +4,10 @@
   align-items: center;
   justify-content: space-around;
   background: lightblue;
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  width: 100vw;
 }
 
 .container ul {
@@ -87,6 +91,10 @@ ul li ul:hover{
     align-items: flex-end;
     justify-content: center;
     background-color: aliceblue;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 10;
   }
 
   .mobileNavTop button{
