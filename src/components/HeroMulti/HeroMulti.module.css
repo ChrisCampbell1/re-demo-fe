@@ -68,3 +68,9 @@
     transform: scale(110%);
   }
 }
+
+@media only screen and (max-width: 875px) {
+  .container{
+    margin-top: 2.5rem;
+  }
+}
