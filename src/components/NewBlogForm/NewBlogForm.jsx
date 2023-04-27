@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import Tag from '../Tag/Tag'
 
 // services
-import * as authService from '../../services/authService'
+import * as blogService from '../../services/blogService'
 
 // styles
 import styles from './NewBlogForm.module.css'
@@ -32,7 +32,7 @@ export default function NewBlogForm() {
   }
 
   const handleChangePhoto = (e) => {
-    setPhotoData({ photo: e.target.files[0] })
+    setPhotoData(e.target.files[0])
   }
 
   const handleChangeTag = (e) => {
@@ -51,11 +51,9 @@ export default function NewBlogForm() {
 
   const handleSubmit = async(e) => {
     e.preventDefault()
-    try {
-      
-    } catch (err) {
-      
-    }
+    const blog = await blogService.createBlog(formData)
+    await blogService.addPhoto(photoData, blog._id)
+    navigate('/')
   }
   
   return (
@@ -97,8 +95,12 @@ export default function NewBlogForm() {
           value={tag}
           onChange={handleChangeTag}
         />
-        <button onClick={() => handleAddTag()}>Add Tag</button>
-      </div>
+        <button
+          onClick={() => handleAddTag()}
+          type='button'
+        >
+          Add Tag</button>
+        </div>
       <div className={styles.inputContainer}>
         <label htmlFor="photo-upload" className={styles.label}>
           Upload Photo
@@ -110,6 +112,7 @@ export default function NewBlogForm() {
           onChange={handleChangePhoto}
         />
       </div>
+      <button>Publish</button>
     </form>
   )
 }
