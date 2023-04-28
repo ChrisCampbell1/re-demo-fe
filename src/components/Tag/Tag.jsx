@@ -17,7 +17,7 @@ export default function Tag({ tag, handleRemoveTag }) {
   return (
     <div className={styles.container}>
       <p>{tag}</p>
-      <button onClick={() => handleRemoveTag(tag)}>X</button>
+      <button type="button" onClick={() => handleRemoveTag(tag)}>X</button>
     </div>
   )
 }

@@ -56,4 +56,31 @@ const deleteBlog = async(id) => {
   }
 }
 
-export { createBlog, addPhoto, getAllBlogs, deleteBlog }
+const getBlog = async(id) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}`, {
+      method: 'GET'
+    })
+    return res.json()
+  } catch (err) {
+    throw err
+  }
+}
+
+const updateBlog = async(id, formData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+      body: JSON.stringify(formData)
+    })
+    return res.json()
+  } catch (err) {
+    throw err
+  }
+}
+
+export { createBlog, addPhoto, getAllBlogs, deleteBlog, getBlog, updateBlog }

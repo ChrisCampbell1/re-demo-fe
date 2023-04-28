@@ -10,6 +10,7 @@ import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import Dashboard from './pages/Dashboard/Dashboard'
 import Blog from './pages/Blog/Blog'
+import EditBlog from './pages/EditBlog/EditBlog'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -70,6 +71,14 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/blog/:id"
+          element={
+            <ProtectedRoute user={user}>
+              <EditBlog />
             </ProtectedRoute>
           }
         />

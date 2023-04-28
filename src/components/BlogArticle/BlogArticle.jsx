@@ -25,7 +25,7 @@ export default function BlogArticle({ blog, user, handleDeleteClick }) {
       </div>
       <p>{blog.body}</p>
       <div className="buttons">
-        <Link to={`/blog/${blog._id}`}>Edit Post</Link>
+        <Link to={`/blog/${blog._id}`} state={blog}>Edit Post</Link>
         <button
           type='button'
           onClick={() => handleDeleteClick(blog._id)}
