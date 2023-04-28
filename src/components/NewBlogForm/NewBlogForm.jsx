@@ -1,5 +1,5 @@
 // npm modules
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 // components
@@ -53,7 +53,7 @@ export default function NewBlogForm() {
     e.preventDefault()
     const blog = await blogService.createBlog(formData)
     await blogService.addPhoto(photoData, blog._id)
-    navigate('/')
+    navigate('/blog')
   }
   
   return (

@@ -31,5 +31,29 @@ const addPhoto = async(photo, blogId) => {
     return await blogPost.json()
 }
 
+const getAllBlogs = async() => {
+  try {
+    const res = await fetch(`${BASE_URL}`, {
+      method: 'GET'
+    })
+    return res.json()
+  } catch (err) {
+    throw err
+  }
+}
 
-export { createBlog, addPhoto }
+const deleteBlog = async(id) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      }
+    })
+    return res.json()
+  } catch (err) {
+    throw err
+  }
+}
+
+export { createBlog, addPhoto, getAllBlogs, deleteBlog }

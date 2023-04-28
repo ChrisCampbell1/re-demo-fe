@@ -9,6 +9,7 @@ import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import Dashboard from './pages/Dashboard/Dashboard'
+import Blog from './pages/Blog/Blog'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -70,6 +71,12 @@ const App = () => {
             <ProtectedRoute user={user}>
               <Dashboard />
             </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/blog"
+          element={
+            <Blog user={user}/>
           }
         />
       </Routes>
