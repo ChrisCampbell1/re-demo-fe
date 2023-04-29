@@ -1,7 +1,7 @@
 // npm modules
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import ReactQuill from 'react-quill'
 
 // components
 import Tag from '../Tag/Tag'
@@ -11,6 +11,7 @@ import * as blogService from '../../services/blogService'
 
 // styles
 import styles from './EditBlogForm.module.css'
+import 'react-quill/dist/quill.snow.css'
 
 // component
 
@@ -62,11 +63,15 @@ export default function EditBlogForm({ blog }) {
   }
 
   const handleSubmit = async(e) => {
+    formData.body = convertedText
     e.preventDefault()
     const updatedBlog = await blogService.updateBlog(blog._id ,formData)
     await blogService.addPhoto(photoData, updatedBlog._id)
     navigate('/blog')
   }
+
+  const [convertedText, setConvertedText] = useState(blog.body)
+
   
   return (
 <form
@@ -84,7 +89,7 @@ export default function EditBlogForm({ blog }) {
           onChange={handleChange}
         />
       </div>
-      <div className={styles.inputContainer}>
+      {/* <div className={styles.inputContainer}>
         <label htmlFor="body">Body</label>
         <textarea
           name="body"
@@ -94,6 +99,15 @@ export default function EditBlogForm({ blog }) {
           value={formData.body}
           onChange={handleChange}
         ></textarea>
+      </div> */}
+      <div>
+        <ReactQuill
+          theme='snow'
+          value={convertedText}
+          onChange={setConvertedText}
+          // onChange={handleBodyChange}
+          style={{minHeight: '200px'}}
+        />
       </div>
       {formData.tags && 
         <div className={styles.tags}>

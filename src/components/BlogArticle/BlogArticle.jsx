@@ -14,6 +14,8 @@ import styles from './BlogArticle.module.css'
 
 
 export default function BlogArticle({ blog, user, handleDeleteClick }) {
+  const markup = { __html: blog.body }
+  
   return (
     <article className={styles.container}>
       <h3>{blog.title}</h3>
@@ -23,7 +25,8 @@ export default function BlogArticle({ blog, user, handleDeleteClick }) {
           <BlogTag tag={tag} key={idx}/>
         )}
       </div>
-      <p>{blog.body}</p>
+      {/* {blog.body} */}
+      <div dangerouslySetInnerHTML={markup}></div>
       <div className="buttons">
         <Link to={`/blog/${blog._id}`} state={blog}>Edit Post</Link>
         <button
