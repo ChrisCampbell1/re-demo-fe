@@ -12,6 +12,8 @@ import Dashboard from './pages/Dashboard/Dashboard'
 import Blog from './pages/Blog/Blog'
 import EditBlog from './pages/EditBlog/EditBlog'
 import BlogCategory from './pages/BlogCategory/BlogCategory'
+import Reviews from './pages/Reviews/Reviews'
+import EditReview from './pages/EditReview/EditReview'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -93,6 +95,20 @@ const App = () => {
           path="/blog/:category"
           element={
             <BlogCategory user={user}/>
+          }
+        />
+        <Route
+          path="/reviews"
+          element={
+            <Reviews user={user}/>
+          }
+        />
+        <Route
+          path="/review/edit/:id"
+          element={
+            <ProtectedRoute user={user}>
+              <EditReview />
+            </ProtectedRoute>
           }
         />
       </Routes>

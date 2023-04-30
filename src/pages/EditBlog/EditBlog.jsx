@@ -16,7 +16,6 @@ import styles from './EditBlog.module.css'
 export default function EditBlog() {
   const location = useLocation()
   const blog = location.state
-  console.log(blog)
   
   return (
     <main className={styles.container}>

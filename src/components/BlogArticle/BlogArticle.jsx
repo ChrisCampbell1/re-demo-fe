@@ -28,7 +28,7 @@ export default function BlogArticle({ blog, user, handleDeleteClick }) {
       </div>
       {/* {blog.body} */}
       <div dangerouslySetInnerHTML={markup}></div>
-      <div className="buttons">
+      <div className={styles.buttons}>
         <Link to={`/blog/edit/${blog._id}`} state={blog}>Edit Post</Link>
         <button
           type='button'

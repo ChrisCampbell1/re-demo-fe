@@ -9,16 +9,17 @@ import { useNavigate } from 'react-router-dom'
 import * as reviewService from '../../services/reviewService'
 
 // styles
-import styles from './NewReviewForm.module.css'
+import styles from './EditReviewForm.module.css'
 
 // component
 
 
-export default function NewReviewForm() {
+export default function EditReviewForm({ review }) {
   const [formData, setFormData] = useState({
-    review: '',
-    name: '',
+    review: review.review,
+    client: review.client
   })
+
   const navigate = useNavigate()
 
   const handleChange = (e) => {
@@ -27,10 +28,10 @@ export default function NewReviewForm() {
 
   const handleSubmit = async(e) => {
     e.preventDefault()
-    await reviewService.createReview(formData)
+    const updatedReview = await reviewService.updateReview(review._id ,formData)
     navigate('/reviews')
   }
-  
+
   return (
     <form
       autoComplete="off"
@@ -45,6 +46,7 @@ export default function NewReviewForm() {
           cols="30"
           rows="10"
           onChange={handleChange}
+          value={formData.review}
         ></textarea>
       </div>
       <div className={styles.inputContainer}>
@@ -54,6 +56,7 @@ export default function NewReviewForm() {
           name="client"
           id="client"
           onChange={handleChange}
+          value={formData.client}
         />
       </div>
       <button>Save Review</button>
