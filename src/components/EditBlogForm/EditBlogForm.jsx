@@ -28,7 +28,7 @@ export default function EditBlogForm({ blog }) {
 
   const [tag, setTag] = useState('')
 
-  const [photoData, setPhotoData] = useState({})
+  const [photoData, setPhotoData] = useState(null)
 
   const navigate = useNavigate()
 
@@ -66,7 +66,9 @@ export default function EditBlogForm({ blog }) {
     formData.body = convertedText
     e.preventDefault()
     const updatedBlog = await blogService.updateBlog(blog._id ,formData)
-    await blogService.addPhoto(photoData, updatedBlog._id)
+    if(photoData !== null){
+      await blogService.addPhoto(photoData, updatedBlog._id)
+    }
     navigate('/blog')
   }
 
@@ -100,13 +102,18 @@ export default function EditBlogForm({ blog }) {
           onChange={handleChange}
         ></textarea>
       </div> */}
-      <div>
+      <div className={styles.richText}>
         <ReactQuill
           theme='snow'
           value={convertedText}
           onChange={setConvertedText}
           // onChange={handleBodyChange}
-          style={{minHeight: '200px'}}
+          // style={{minHeight: '200px'}}
+          modules={{
+            clipboard: {
+              matchVisual: false
+            }
+          }}
         />
       </div>
       {formData.tags && 

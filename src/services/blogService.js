@@ -83,4 +83,15 @@ const updateBlog = async(id, formData) => {
   }
 }
 
-export { createBlog, addPhoto, getAllBlogs, deleteBlog, getBlog, updateBlog }
+const getBlogsByCategory = async(category) => {
+  try {
+    const res = await fetch(`${BASE_URL}/category/${category}`, {
+      method: 'GET'
+    })
+    return res.json()
+  } catch (err) {
+    throw err
+  }
+}
+
+export { createBlog, addPhoto, getAllBlogs, deleteBlog, getBlog, updateBlog, getBlogsByCategory }

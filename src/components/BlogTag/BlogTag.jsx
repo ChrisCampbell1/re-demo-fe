@@ -1,5 +1,5 @@
 // npm modules
-
+import { Link } from 'react-router-dom'
 
 // components
 
@@ -16,7 +16,8 @@ import styles from './BlogTag.module.css'
 export default function BlogTag({ tag }) {
   return (
     <div className={styles.container}>
-      <p>#{tag}</p>
+      {/* <p>#{tag}</p> */}
+      <Link to={`/blog/${tag}`} state={tag}>#{tag}</Link>
     </div>
   )
 }

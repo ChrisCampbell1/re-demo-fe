@@ -11,6 +11,7 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import Dashboard from './pages/Dashboard/Dashboard'
 import Blog from './pages/Blog/Blog'
 import EditBlog from './pages/EditBlog/EditBlog'
+import BlogCategory from './pages/BlogCategory/BlogCategory'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -75,7 +76,7 @@ const App = () => {
           }
         />
         <Route
-          path="/blog/:id"
+          path="/blog/edit/:id"
           element={
             <ProtectedRoute user={user}>
               <EditBlog />
@@ -86,6 +87,12 @@ const App = () => {
           path="/blog"
           element={
             <Blog user={user}/>
+          }
+        />
+        <Route
+          path="/blog/:category"
+          element={
+            <BlogCategory user={user}/>
           }
         />
       </Routes>
