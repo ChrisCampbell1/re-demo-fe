@@ -38,7 +38,9 @@ export default function NewBlogForm() {
   }
 
   const handleChangeTag = (e) => {
-    setTag(e.target.value)
+    const tag = e.target.value
+    const slug = tag.replace(/\s/g, "")
+    setTag(slug)
   }
 
   const handleAddTag = (e) => {

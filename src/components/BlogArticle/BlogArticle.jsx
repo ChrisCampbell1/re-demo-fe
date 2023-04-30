@@ -18,6 +18,7 @@ export default function BlogArticle({ blog, user, handleDeleteClick }) {
   
   return (
     <article className={styles.container}>
+      <title>{blog.title}</title>
       <h3>{blog.title}</h3>
       <img src={blog.photo} alt="" />
       <div className="tagContainer">
