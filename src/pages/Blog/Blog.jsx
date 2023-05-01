@@ -15,7 +15,7 @@ import styles from './Blog.module.css'
 
 
 export default function Blog({ user }) {
-  const [blogs, setBlogs] = useState([])
+  const [blogs, setBlogs] = useState(null)
 
   useEffect(() => {
     const fetchBlogs = async() => {
