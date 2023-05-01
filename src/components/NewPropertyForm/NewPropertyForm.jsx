@@ -25,10 +25,10 @@ export default function NewPropertyForm() {
     status: '',
     mlsLink: '',
     type: '',
-    featured: true
+    featured: false
   })
 
-  const [photoData, setPhotoData] = useState({})
+  const [photoData, setPhotoData] = useState({}) //used to be object
 
   const navigate = useNavigate()
 
@@ -48,7 +48,7 @@ export default function NewPropertyForm() {
   const handleSubmit = async(e) => {
     e.preventDefault()
     const property = await propertyService.createProperty(formData)
-    // await propertyService.addPhoto(photoData, property._id)
+    propertyService.addPhoto(photoData, property._id)
     navigate('/listings')
   }
 
@@ -129,7 +129,7 @@ export default function NewPropertyForm() {
       <div className={styles.inputContainer}>
         <label htmlFor="mlsLink">MLS Link</label>
         <input
-          type="url"
+          type="text"
           name="mlsLink"
           id="mlsLink"
           onChange={handleChange}
@@ -167,7 +167,6 @@ export default function NewPropertyForm() {
           onChange={handleChangePhoto}
           accept="image/*"
         />
-        <button type='button'>Clear Photo Selection</button>
       </div>
       <button type='submit'>Save Listing</button>
     </form>
