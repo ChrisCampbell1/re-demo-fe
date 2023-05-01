@@ -147,6 +147,7 @@ export default function EditBlogForm({ blog }) {
           id="photo-upload"
           name="photo"
           onChange={handleChangePhoto}
+          accept="image/*"
         />
       </div>
       <button>Update</button>

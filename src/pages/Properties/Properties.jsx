@@ -16,7 +16,7 @@ import styles from './Properties.module.css'
 export default function Properties() {
   return (
     <main className={styles.container}>
-      Properties
+      <h1>Listings</h1>
     </main>
   )
 }

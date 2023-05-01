@@ -33,6 +33,7 @@ export default function NewBlogForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
+
   const handleChangePhoto = (e) => {
     setPhotoData(e.target.files[0])
   }
@@ -134,6 +135,7 @@ export default function NewBlogForm() {
           id="photo-upload"
           name="photo"
           onChange={handleChangePhoto}
+          accept="image/*"
         />
       </div>
       <button>Publish</button>
