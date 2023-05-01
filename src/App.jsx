@@ -14,6 +14,7 @@ import EditBlog from './pages/EditBlog/EditBlog'
 import BlogCategory from './pages/BlogCategory/BlogCategory'
 import Reviews from './pages/Reviews/Reviews'
 import EditReview from './pages/EditReview/EditReview'
+import Properties from './pages/Properties/Properties'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -109,6 +110,12 @@ const App = () => {
             <ProtectedRoute user={user}>
               <EditReview />
             </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/listings"
+          element={
+            <Properties user={user}/>
           }
         />
       </Routes>
