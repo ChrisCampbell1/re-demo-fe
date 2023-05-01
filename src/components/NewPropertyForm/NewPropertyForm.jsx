@@ -28,7 +28,7 @@ export default function NewPropertyForm() {
     featured: false
   })
 
-  const [photoData, setPhotoData] = useState({}) //used to be object
+  const [photoData, setPhotoData] = useState({})
 
   const navigate = useNavigate()
 

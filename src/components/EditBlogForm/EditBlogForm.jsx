@@ -1,5 +1,5 @@
 // npm modules
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import ReactQuill from 'react-quill'
 
@@ -31,14 +31,6 @@ export default function EditBlogForm({ blog }) {
   const [photoData, setPhotoData] = useState(null)
 
   const navigate = useNavigate()
-
-  // useEffect(() => {
-  //   const fetchBlog = async(id) => {
-  //     const blog = await blogService.getBlog(id)
-  //     setBlog(blog)
-  //   }
-  //   fetchBlog(blogId)
-  // }, [])
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })

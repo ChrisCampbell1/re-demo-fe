@@ -57,4 +57,40 @@ const deleteProperty = async(id) => {
   }
 }
 
-export { createProperty, addPhoto, getAllProperties, deleteProperty }
+const updateProperty = async(id, formData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+      body: JSON.stringify(formData)
+    })
+    return res.json()
+  } catch (err) {
+    throw err
+  }
+}
+
+const updatePhoto = async(photos, propertyId) => {
+  await fetch(`${BASE_URL}/${propertyId}/delete-photos`, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    },
+  })
+  for (let i = 0; i < photos.length; i++) {
+    const photoData = new FormData()
+    photoData.append('photo', photos[i])
+    await fetch(`${BASE_URL}/${propertyId}/add-photo`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+      body: photoData
+    })
+  }
+}
+
+export { createProperty, addPhoto, getAllProperties, deleteProperty, updateProperty, updatePhoto }

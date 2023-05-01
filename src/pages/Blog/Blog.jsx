@@ -34,9 +34,15 @@ export default function Blog({ user }) {
   return (
     <main className={styles.container}>
       <h1>Blog</h1>
-      {blogs.map((blog) =>
-      <BlogArticle blog={blog} key={blog._id} user={user} handleDeleteClick={handleDeleteClick}/>
-      )}
+      {blogs ?
+        blogs.map((blog) =>
+        <BlogArticle blog={blog} key={blog._id} user={user} handleDeleteClick={handleDeleteClick}/>
+        )
+      :
+        <>
+        <h3>Loading Posts...</h3>
+        </>
+      }
     </main>
   )
 }
