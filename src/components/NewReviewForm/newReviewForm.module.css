@@ -1,10 +1,12 @@
 .container {
   background-color: white;
   padding: 2rem;
+  padding-top: 0;
   border-radius: .25rem;
   border: .5px solid grey;
   box-shadow:  2px 2px 10px grey;
   width: 500px;
+  margin-bottom: 2rem;
 }
 
 .container .inputContainer {
@@ -97,5 +99,13 @@
 .container button:hover {
   cursor: pointer;
   background-color: rgb(33, 79, 218);
+
+}
+
+@media only screen and (max-width: 400px) {
+  .container {
+    width: 350px;
+    padding: 1rem;
+  }
 
 }
