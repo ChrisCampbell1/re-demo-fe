@@ -45,7 +45,7 @@ export default function NewBlogForm() {
   }
 
   const handleAddTag = (e) => {
-    if(tag !== ''){
+    if (tag !== '') {
       setFormData({ ...formData, tags: [...formData.tags, tag] })
       setTag('')
     }
@@ -56,7 +56,7 @@ export default function NewBlogForm() {
     setFormData({ ...formData, tags: updatedTags })
   }
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     console.log(convertedText)
     console.log(typeof convertedText)
     formData.body = convertedText
@@ -66,9 +66,9 @@ export default function NewBlogForm() {
     await blogService.addPhoto(photoData, blog._id)
     navigate('/blog')
   }
-  
+
   const handleKeyDown = (e) => {
-    if(e.key === "Enter") {
+    if (e.key === "Enter") {
       e.preventDefault()
       handleAddTag()
     } else return
@@ -87,7 +87,7 @@ export default function NewBlogForm() {
     >
       <div className={styles.inputContainer}>
         <label htmlFor="title">Title</label>
-        <input 
+        <input
           type="text"
           name="title"
           id="title"
@@ -110,7 +110,7 @@ export default function NewBlogForm() {
       </div>
       <div className={styles.tags}>
         {formData.tags.map((tag, idx) =>
-          <Tag key={idx} tag={tag} handleRemoveTag={handleRemoveTag}/>
+          <Tag key={idx} tag={tag} handleRemoveTag={handleRemoveTag} />
         )}
       </div>
       <div className={styles.inputContainer}>
@@ -130,12 +130,12 @@ export default function NewBlogForm() {
           className={styles.btn}
         >
           Add Tag</button>
-        </div>
+      </div>
       <div className={styles.inputContainerUpload}>
-      {photoData ?
-          <label htmlFor="photos">Image Selected</label>
-        :
-          <label htmlFor="photos">Upload Image</label>
+        {photoData ?
+          <label htmlFor="photo-upload">Image Selected</label>
+          :
+          <label htmlFor="photo-upload">Upload Image</label>
         }
         <input
           type="file"

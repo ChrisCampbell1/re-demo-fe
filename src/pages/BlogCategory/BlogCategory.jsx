@@ -37,7 +37,7 @@ export default function BlogCategory({ user }) {
   
   return (
     <main className={styles.container}>
-      <h1>{category}</h1>
+      <h1>#{category}</h1>
       {blogs.map((blog) =>
       <BlogArticle blog={blog} key={blog._id} user={user} handleDeleteClick={handleDeleteClick}/>
       )}

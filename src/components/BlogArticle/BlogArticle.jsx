@@ -19,9 +19,9 @@ export default function BlogArticle({ blog, user, handleDeleteClick }) {
   return (
     <article className={styles.container}>
       <title>{blog.title}</title>
-      <h3>{blog.title}</h3>
+      <h2>{blog.title}</h2>
       <img src={blog.photo} alt="" />
-      <div className="tagContainer">
+      <div className={styles.tagContainer}>
         {blog.tags.map((tag, idx) =>
           <BlogTag tag={tag} key={idx}/>
         )}

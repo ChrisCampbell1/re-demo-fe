@@ -9,6 +9,10 @@
   width: 100vw;
 }
 
+.container h1 {
+  /* text-transform: uppercase; */
+}
+
 .container h2 {
   background-color: royalblue;
   height: 2rem;
@@ -31,6 +35,8 @@
 
 .container h2:hover {
   cursor: pointer;
+  background-color: rgb(33, 79, 218);
+
 }
 
 @media only screen and (max-width: 400px) {
