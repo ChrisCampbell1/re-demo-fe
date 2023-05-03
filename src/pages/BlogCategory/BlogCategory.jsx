@@ -1,6 +1,6 @@
 // npm modules
 import { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 
 // components
 import BlogArticle from '../../components/BlogArticle/BlogArticle'
@@ -38,6 +38,9 @@ export default function BlogCategory({ user }) {
   return (
     <main className={styles.container}>
       <h1>#{category}</h1>
+      <Link to={`/blog`}>
+        <h4>All Articles</h4>
+      </Link>
       {blogs.map((blog) =>
       <BlogArticle blog={blog} key={blog._id} user={user} handleDeleteClick={handleDeleteClick}/>
       )}

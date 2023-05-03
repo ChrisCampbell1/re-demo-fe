@@ -19,7 +19,9 @@ export default function BlogArticle({ blog, user, handleDeleteClick }) {
   return (
     <article className={styles.container}>
       <title>{blog.title}</title>
-      <h2>{blog.title}</h2>
+      <Link to={`/blog/view/${blog._id}`} className={styles.detailLink} state={blog}>
+        <h2>{blog.title}</h2>
+      </Link>
       <img src={blog.photo} alt="" />
       <div className={styles.tagContainer}>
         {blog.tags.map((tag, idx) =>

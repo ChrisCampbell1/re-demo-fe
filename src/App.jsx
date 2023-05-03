@@ -17,6 +17,7 @@ import EditReview from './pages/EditReview/EditReview'
 import Properties from './pages/Properties/Properties'
 import EditProperty from './pages/EditProperty/EditProperty'
 import PropertyDetail from './pages/PropertyDetail/PropertyDetail'
+import BlogDetail from './pages/BlogDetail/BlogDetail'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -98,6 +99,12 @@ const App = () => {
           path="/blog/:category"
           element={
             <BlogCategory user={user}/>
+          }
+        />
+        <Route
+          path="/blog/view/:id"
+          element={
+            <BlogDetail user={user}/>
           }
         />
         <Route
