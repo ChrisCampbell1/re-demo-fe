@@ -25,7 +25,7 @@ export default function NewBlogForm() {
 
   const [tag, setTag] = useState('')
 
-  const [photoData, setPhotoData] = useState({})
+  const [photoData, setPhotoData] = useState(null)
 
   const navigate = useNavigate()
 
@@ -45,8 +45,10 @@ export default function NewBlogForm() {
   }
 
   const handleAddTag = (e) => {
-    setFormData({ ...formData, tags: [...formData.tags, tag] })
-    setTag('')
+    if(tag !== ''){
+      setFormData({ ...formData, tags: [...formData.tags, tag] })
+      setTag('')
+    }
   }
 
   const handleRemoveTag = (tagName) => {
@@ -57,7 +59,6 @@ export default function NewBlogForm() {
   const handleSubmit = async(e) => {
     console.log(convertedText)
     console.log(typeof convertedText)
-    // setFormData({ ...formData, body: convertedText })
     formData.body = convertedText
     console.log(formData)
     e.preventDefault()
@@ -66,11 +67,17 @@ export default function NewBlogForm() {
     navigate('/blog')
   }
   
+  const handleKeyDown = (e) => {
+    if(e.key === "Enter") {
+      e.preventDefault()
+      handleAddTag()
+    } else return
+  }
+
   //react quill test
 
-  const [convertedText, setConvertedText] = useState("Some default content")
+  const [convertedText, setConvertedText] = useState("Type blog entry here. This editor will expand as you type.")
 
-  // console.log(convertedText)
 
   return (
     <form
@@ -87,23 +94,18 @@ export default function NewBlogForm() {
           onChange={handleChange}
         />
       </div>
-      {/* <div className={styles.inputContainer}>
-        <label htmlFor="body">Body</label>
-        <textarea
-          name="body"
-          id="body"
-          cols="30"
-          rows="10"
-          onChange={handleChange}
-        ></textarea>
-      </div> */}
-      <div>
+      <div className={styles.inputContainer}>
+        <label htmlFor="quill">Blog Entry</label>
         <ReactQuill
           theme='snow'
           value={convertedText}
           onChange={setConvertedText}
-          // onChange={handleBodyChange}
-          style={{minHeight: '200px'}}
+          // style={{
+          //   minHeight: '100px',
+          //   borderRadius: '.25rem',
+          // }}
+          id="quill"
+          className={styles.quill}
         />
       </div>
       <div className={styles.tags}>
@@ -117,19 +119,24 @@ export default function NewBlogForm() {
           type="text"
           name="tags"
           id="tags"
+          placeholder="No spaces, you can add multiple tags."
           value={tag}
           onChange={handleChangeTag}
+          onKeyDown={handleKeyDown}
         />
         <button
           onClick={() => handleAddTag()}
           type='button'
+          className={styles.btn}
         >
           Add Tag</button>
         </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="photo-upload" className={styles.label}>
-          Upload Photo
-        </label>
+      <div className={styles.inputContainerUpload}>
+      {photoData ?
+          <label htmlFor="photos">Image Selected</label>
+        :
+          <label htmlFor="photos">Upload Image</label>
+        }
         <input
           type="file"
           id="photo-upload"
@@ -138,7 +145,7 @@ export default function NewBlogForm() {
           accept="image/*"
         />
       </div>
-      <button>Publish</button>
+      <button className={styles.btn}>Publish</button>
 
     </form>
   )

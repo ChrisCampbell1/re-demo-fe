@@ -3,3 +3,29 @@
   align-items: center;
   flex-direction: column;
 }
+
+.container .about {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 50rem;
+}
+
+.about .headshot,.bio{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.about .headshot img{
+  width: 75%;
+  height: 75%;
+  object-fit: cover;
+}
+
+.about .bio {
+  padding: 4rem;
+}

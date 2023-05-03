@@ -16,8 +16,12 @@ import styles from './PropertyCard.module.css'
 export default function PropertyCard({ property, user, handleDeleteClick }) {
   return (
     <div className={styles.container}>
-      <h3>{property.address}</h3>
-      <img src={property.photos[0]} alt={property.address} />
+      <Link to={`/listing/${property._id}`} state={property}>
+        <h3>{property.address}</h3>
+      </Link>
+      <Link to={`/listing/${property._id}`} state={property}>
+        <img src={property.photos[0]} alt={property.address} />
+      </Link>
       {user &&
       <div className={styles.buttons}>
         <Link to={`/listing/edit/${property._id}`} state={property}>Edit Listing</Link>

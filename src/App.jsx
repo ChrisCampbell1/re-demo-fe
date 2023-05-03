@@ -16,6 +16,7 @@ import Reviews from './pages/Reviews/Reviews'
 import EditReview from './pages/EditReview/EditReview'
 import Properties from './pages/Properties/Properties'
 import EditProperty from './pages/EditProperty/EditProperty'
+import PropertyDetail from './pages/PropertyDetail/PropertyDetail'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -125,6 +126,12 @@ const App = () => {
             <ProtectedRoute user={user}>
               <EditProperty />
             </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/listing/:id"
+          element={
+            <PropertyDetail user={user}/>
           }
         />
       </Routes>

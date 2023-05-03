@@ -43,7 +43,7 @@ export default function HorizontalNavBar({ user, handleLogout }) {
     <nav className={styles.container}>
       {user ?
         <ul>
-          <li>Welcome, {user.name}</li>
+          <li><NavLink to="/">Home</NavLink></li>
           <li><NavLink to="/profiles">Profiles</NavLink></li>
           <li><NavLink to="" onClick={handleLogout}>LOG OUT</NavLink></li>
           <li><NavLink to="/change-password">Change Password</NavLink></li>
@@ -67,6 +67,7 @@ export default function HorizontalNavBar({ user, handleLogout }) {
         </ul>
       :
         <ul>
+          <li><NavLink to="/">Home</NavLink></li>
           <li><NavLink to="/blog">Blog</NavLink></li>
           <li><NavLink to="/reviews">Reviews</NavLink></li>
           <li><NavLink to="/listings">Listings</NavLink></li>
@@ -96,7 +97,7 @@ export default function HorizontalNavBar({ user, handleLogout }) {
       <div className={styles.mobileLinks}>
         {user ?
           <ul>
-            <li>Welcome, {user.name}</li>
+            <li><NavLink to="/">Home</NavLink></li>
             <li><NavLink to="/profiles">Profiles</NavLink></li>
             <li><NavLink to="" onClick={handleLogout}>LOG OUT</NavLink></li>
             <li><NavLink to="/change-password">Change Password</NavLink></li>
@@ -122,8 +123,7 @@ export default function HorizontalNavBar({ user, handleLogout }) {
           </ul>
         :
           <ul>
-            <li><NavLink to="#">Link 1</NavLink></li>
-            <li><NavLink to="#">Link 2</NavLink></li>
+            <li><NavLink to="/">Home</NavLink></li>
             <li><NavLink to="/blog">Blog</NavLink></li>
             <li><NavLink to="/reviews">Reviews</NavLink></li>
             <li><NavLink to="/listings">Listings</NavLink></li>

@@ -43,7 +43,7 @@ export default function NewReviewForm() {
           name="review"
           id="review"
           cols="30"
-          rows="10"
+          rows="6"
           onChange={handleChange}
         ></textarea>
       </div>

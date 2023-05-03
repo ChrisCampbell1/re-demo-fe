@@ -28,7 +28,7 @@ export default function NewPropertyForm() {
     featured: false
   })
 
-  const [photoData, setPhotoData] = useState({})
+  const [photoData, setPhotoData] = useState(null)
 
   const navigate = useNavigate()
 
@@ -82,7 +82,7 @@ export default function NewPropertyForm() {
           name="description"
           id="description"
           cols="30"
-          rows="10"
+          rows="6"
           onChange={handleChange}
         ></textarea>
       </div>
@@ -101,6 +101,7 @@ export default function NewPropertyForm() {
           type="number"
           name="baths"
           id="baths"
+          step={.5}
           onChange={handleChange}
         />
       </div>
@@ -148,7 +149,7 @@ export default function NewPropertyForm() {
           <option value="Seller">Seller</option>
         </select>
       </div>
-      <div className={styles.inputContainer}>
+      <div className={styles.inputContainerCheck}>
         <label htmlFor="featured">Featured</label>
         <input
           type="checkbox"
@@ -157,8 +158,13 @@ export default function NewPropertyForm() {
           onChange={handleCheckboxChange}
         />
       </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="photos">Photos</label>
+      <div className={styles.inputContainerUpload}>
+        {photoData ?
+          <label htmlFor="photos">{photoData.length === 1 ? "1 Photo Selected" : `${photoData.length} Photos Selected`}</label>
+        :
+          <label htmlFor="photos">Select Listing Photos</label>
+        }
+        
         <input
           type="file"
           name="photos"
