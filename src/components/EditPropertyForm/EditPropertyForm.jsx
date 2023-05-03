@@ -22,10 +22,12 @@ export default function EditPropertyForm({ property }) {
     description: property.description,
     beds: property.beds,
     baths: property.baths,
+    squareFeet: property.squareFeet,
     price: property.price,
     status: property.status,
     mlsLink: property.mlsLink,
     type: property.type,
+    listingBrokerage: property.listingBrokerage,
     featured: property.featured
   })
 
@@ -123,6 +125,16 @@ export default function EditPropertyForm({ property }) {
         />
       </div>
       <div className={styles.inputContainer}>
+        <label htmlFor="squareFeet">Square Feet</label>
+        <input
+          type="number"
+          name="squareFeet"
+          id="squareFeet"
+          onChange={handleChange}
+          value={formData.squareFeet}
+        />
+      </div>
+      <div className={styles.inputContainer}>
         <label htmlFor="status">Status</label>
         <select
           name="status"
@@ -159,6 +171,16 @@ export default function EditPropertyForm({ property }) {
           <option value="Buyer">Buyer</option>
           <option value="Seller">Seller</option>
         </select>
+      </div>
+      <div className={styles.inputContainer}>
+        <label htmlFor="listingBrokerage">Listing Brokerage</label>
+        <input
+          type="text"
+          name="listingBrokerage"
+          id="listingBrokerage"
+          onChange={handleChange}
+          value={formData.listingBrokerage}
+        />
       </div>
       <div className={styles.inputContainer}>
         <label htmlFor="featured">Featured</label>

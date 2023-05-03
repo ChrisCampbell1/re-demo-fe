@@ -17,7 +17,7 @@ export default function ReviewCard({ review, user, handleDeleteClick }) {
   return (
     <div className={styles.container}>
       <p>{review.review}</p>
-      <p>{review.client}</p>
+      <p className={styles.client}>{review.client}</p>
       {user &&
       <div className={styles.buttons}>
       <Link to={`/review/edit/${review._id}`} state={review}>Edit Review</Link>

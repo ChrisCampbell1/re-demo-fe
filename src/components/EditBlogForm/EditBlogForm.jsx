@@ -121,16 +121,18 @@ export default function EditBlogForm({ blog }) {
           type="text"
           name="tags"
           id="tags"
+          placeholder="No spaces, you can add multiple tags."
           value={tag}
           onChange={handleChangeTag}
         />
         <button
           onClick={() => handleAddTag()}
           type='button'
+          className={styles.btn}
         >
           Add Tag</button>
         </div>
-      <div className={styles.inputContainer}>
+      <div className={styles.inputContainerUpload}>
         <label htmlFor="photo-upload" className={styles.label}>
           Update Photo
         </label>
@@ -142,7 +144,7 @@ export default function EditBlogForm({ blog }) {
           accept="image/*"
         />
       </div>
-      <button>Update</button>
+      <button className={styles.btn}>Update</button>
     </form>
   )
 }

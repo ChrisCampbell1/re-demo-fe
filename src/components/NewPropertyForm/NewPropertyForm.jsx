@@ -21,10 +21,12 @@ export default function NewPropertyForm() {
     description: '',
     beds: '',
     baths: '',
+    squareFeet: '',
     price: '',
     status: '',
     mlsLink: '',
     type: '',
+    listingBrokerage: '',
     featured: false
   })
 
@@ -106,6 +108,15 @@ export default function NewPropertyForm() {
         />
       </div>
       <div className={styles.inputContainer}>
+        <label htmlFor="squareFeet">Square Feet</label>
+        <input
+          type="number"
+          name="squareFeet"
+          id="squareFeet"
+          onChange={handleChange}
+        />
+      </div>
+      <div className={styles.inputContainer}>
         <label htmlFor="price">Price</label>
         <input
           type="number"
@@ -135,7 +146,6 @@ export default function NewPropertyForm() {
           id="mlsLink"
           onChange={handleChange}
         />
-
       </div>
       <div className={styles.inputContainer}>
         <label htmlFor="type">Type</label>
@@ -148,6 +158,15 @@ export default function NewPropertyForm() {
           <option value="Buyer">Buyer</option>
           <option value="Seller">Seller</option>
         </select>
+      </div>
+      <div className={styles.inputContainer}>
+        <label htmlFor="listingBrokerage">Listing Brokerage</label>
+        <input
+          type="text"
+          name="listingBrokerage"
+          id="listingBrokerage"
+          onChange={handleChange}
+        />
       </div>
       <div className={styles.inputContainerCheck}>
         <label htmlFor="featured">Featured</label>

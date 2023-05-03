@@ -41,15 +41,15 @@ export default function Dashboard() {
   return (
     <main className={styles.container}>
       <h1>Dashboard</h1>
-      <h2 onClick={() => handleBlogClick()}>New Blog Entry {blog? "▲" : "▼"}</h2>
+      <h2 onClick={() => handleBlogClick()}>New Blog Entry</h2>
       {blog &&
         <NewBlogForm />
       }
-      <h2 onClick={() => handlePropertyClick()}>New Property Entry {property? "▲" : "▼"}</h2>
+      <h2 onClick={() => handlePropertyClick()}>New Listing Entry</h2>
       {property &&
         <NewPropertyForm />
       }
-      <h2 onClick={() => handleReviewClick()}>New Review Entry {review? "▲" : "▼"}</h2>
+      <h2 onClick={() => handleReviewClick()}>New Review Entry</h2>
       {review &&
         <NewReviewForm />
       }

@@ -35,9 +35,11 @@ export default function Properties({ user }) {
     <main className={styles.container}>
       <h1>Listings</h1>
       {properties ?
-        properties.map((property) => 
+      <div className={styles.propertyContainer}>
+        {properties.map((property) => 
           <PropertyCard key={property._id} property={property} user={user} handleDeleteClick={handleDeleteClick}/>
-        )
+        )}
+      </div>
       :
         <>
         <h3>Loading Listings...</h3>

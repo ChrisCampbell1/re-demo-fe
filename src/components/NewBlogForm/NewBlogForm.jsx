@@ -45,7 +45,7 @@ export default function NewBlogForm() {
   }
 
   const handleAddTag = (e) => {
-    if (tag !== '') {
+    if (tag !== '' && !formData.tags.includes(tag)) {
       setFormData({ ...formData, tags: [...formData.tags, tag] })
       setTag('')
     }
@@ -108,11 +108,13 @@ export default function NewBlogForm() {
           className={styles.quill}
         />
       </div>
-      <div className={styles.tags}>
-        {formData.tags.map((tag, idx) =>
-          <Tag key={idx} tag={tag} handleRemoveTag={handleRemoveTag} />
-        )}
-      </div>
+      {formData.tags && 
+        <div className={styles.tags}>
+          {formData.tags.map((tag, idx) =>
+            <Tag key={idx} tag={tag} handleRemoveTag={handleRemoveTag}/>
+          )}
+        </div>
+      }
       <div className={styles.inputContainer}>
         <label htmlFor="tags">Tags</label>
         <input
