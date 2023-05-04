@@ -69,3 +69,71 @@
   object-fit: cover;
   margin-bottom: 2rem;
 }
+
+.container .contactBtn{
+  background-color: royalblue;
+  height: 2rem;
+  border-radius: .25rem;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow:  2px 2px 10px grey;
+  padding: 1.5rem;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  width: 200px;
+  font-size: 1.25rem;
+}
+
+.container .contactBtn:hover {
+  background-color: rgb(33, 79, 218);
+  text-decoration: none;
+}
+
+.container .btn {
+  background-color: royalblue;
+  height: 2rem;
+  border-radius: .25rem;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow:  2px 2px 10px grey;
+  padding: 1.5rem;
+  width: 200px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-top: .5rem;
+  text-decoration: none;
+}
+
+.container .btn:hover {
+  background-color: rgb(33, 79, 218);
+  text-decoration: none;
+}
+
+.container button {
+  background-color: rgb(249, 63, 63);
+  height: 2rem;
+  border-radius: .25rem;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow:  2px 2px 10px grey;
+  padding: 1.5rem;
+  width: 200px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  border: unset;
+}
+
+.container button:hover {
+  cursor: pointer;
+  background-color: red;
+}

@@ -14,6 +14,7 @@ import styles from './PropertyCard.module.css'
 
 
 export default function PropertyCard({ property, user, handleDeleteClick }) {
+  
   return (
       <Link to={`/listing/${property._id}`} state={property} style={{ textDecoration: 'none' }}>
         <div className={styles.container}>

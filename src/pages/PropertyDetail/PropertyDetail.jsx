@@ -1,11 +1,12 @@
 // npm modules
-import { useLocation, Link } from 'react-router-dom'
+import { useLocation, Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
 // components
 
 
 // services
+import * as propertyService from '../../services/propertyService'
 
 
 // styles
@@ -15,6 +16,8 @@ import styles from './PropertyDetail.module.css'
 
 
 export default function PropertyDetail({ user }) {
+  const navigate = useNavigate()
+  
   const location = useLocation()
   const property = location.state
 
@@ -23,6 +26,11 @@ export default function PropertyDetail({ user }) {
   const handleImageClick = (e) => {
     console.log(e)
     setImage(e.target.id)
+  }
+
+  const handleDeleteClick = async(id) => {
+    await propertyService.deleteProperty(id)
+    navigate(`/listings`)
   }
 
   return (
@@ -40,15 +48,16 @@ export default function PropertyDetail({ user }) {
           )}
         </div>
             <p>Beds: {property.beds} | Baths: {property.baths} | Square Feet: {property.squareFeet}</p>
-            <Link to={`/contact`}>Request Info</Link>
+            <Link to={`/contact`} className={styles.contactBtn}>Request Info</Link>
         <p>{property.description}</p>
         <p>Listed by {property.listingBrokerage}</p>
         {user &&
           <div className={styles.buttons}>
-            <Link to={`/listing/edit/${property._id}`} state={property}>Edit Listing</Link>
+            <Link className={styles.btn} to={`/listing/edit/${property._id}`} state={property}>Edit Listing</Link>
             <button
               type='button'
-            // onClick={() => handleDeleteClick(property._id)}
+              className={styles.delete}
+              onClick={() => handleDeleteClick(property._id)}
             >
               Delete Listing
             </button>
