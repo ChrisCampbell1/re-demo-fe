@@ -137,3 +137,32 @@
   cursor: pointer;
   background-color: red;
 }
+
+@media only screen and (max-width: 400px) {
+  .container .listing{
+    width: 350px;
+    padding: 1rem;
+    padding-top: 0;
+  }
+  .container #mainPhoto {
+    height: 300px;
+  }
+  
+  .container h1{
+    text-align: center;
+  }
+
+  .container .listing .thumbnailContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    width: 317px;
+    align-items: space-between;
+    justify-content: space-between;
+  }
+
+  .thumbnailContainer img {
+    margin-right: 1rem;
+  }
+}
