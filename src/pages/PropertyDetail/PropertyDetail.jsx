@@ -48,7 +48,7 @@ export default function PropertyDetail({ user }) {
           )}
         </div>
             <p>Beds: {property.beds} | Baths: {property.baths} | Square Feet: {property.squareFeet}</p>
-            <Link to={`/contact`} className={styles.contactBtn}>Request Info</Link>
+            <Link to={`/contact`} className={styles.contactBtn} state={property}>Request Info</Link>
         <p>{property.description}</p>
         <p>Listed by {property.listingBrokerage}</p>
         {user &&

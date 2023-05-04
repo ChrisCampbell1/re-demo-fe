@@ -43,7 +43,7 @@ export default function PropertyCard({ property, user, handleDeleteClick }) {
               <p>Listed by {property.listingBrokerage}</p>
             </div>
             <div className={styles.contact}>
-              <Link to={`/contact`}>Request Info</Link>
+              <Link to={`/contact`} state={property}>Request Info</Link>
             </div>
           </div>
           {user &&

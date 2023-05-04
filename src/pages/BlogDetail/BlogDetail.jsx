@@ -21,7 +21,7 @@ export default function BlogDetail() {
   
   return (
     <main className={styles.container}>
-      <h1>{blog.title}</h1>
+      <title>{blog.title}</title>
       <Link to={`/blog`}>
         <h4>More Articles</h4>
       </Link>

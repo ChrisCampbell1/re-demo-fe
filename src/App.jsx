@@ -18,6 +18,7 @@ import Properties from './pages/Properties/Properties'
 import EditProperty from './pages/EditProperty/EditProperty'
 import PropertyDetail from './pages/PropertyDetail/PropertyDetail'
 import BlogDetail from './pages/BlogDetail/BlogDetail'
+import Contact from './pages/Contact/Contact'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -139,6 +140,12 @@ const App = () => {
           path="/listing/:id"
           element={
             <PropertyDetail user={user}/>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <Contact user={user}/>
           }
         />
       </Routes>

@@ -44,13 +44,14 @@ export default function HorizontalNavBar({ user, handleLogout }) {
       {user ?
         <ul>
           <li><NavLink to="/">Home</NavLink></li>
-          <li><NavLink to="/profiles">Profiles</NavLink></li>
+          {/* <li><NavLink to="/profiles">Profiles</NavLink></li> */}
           <li><NavLink to="" onClick={handleLogout}>LOG OUT</NavLink></li>
-          <li><NavLink to="/change-password">Change Password</NavLink></li>
+          {/* <li><NavLink to="/change-password">Change Password</NavLink></li> */}
           <li><NavLink to="/dashboard">Dashboard</NavLink></li>
           <li><NavLink to="/blog">Blog</NavLink></li>
           <li><NavLink to="/reviews">Reviews</NavLink></li>
           <li><NavLink to="/listings">Listings</NavLink></li>
+          <li><NavLink to="/contact">Contact</NavLink></li>
           <li className={styles.dropdown}><NavLink to="/change-password">Category 1</NavLink>
             <ul className={styles.dropdownContent}>
               <li><NavLink to='#'>Sub Cat 1</NavLink></li>
@@ -71,6 +72,7 @@ export default function HorizontalNavBar({ user, handleLogout }) {
           <li><NavLink to="/blog">Blog</NavLink></li>
           <li><NavLink to="/reviews">Reviews</NavLink></li>
           <li><NavLink to="/listings">Listings</NavLink></li>
+          <li><NavLink to="/contact">Contact</NavLink></li>
           <li className={styles.dropdown}><NavLink to="/change-password">Category 1</NavLink>
             <ul className={styles.dropdownContent}>
               <li><NavLink to='#'>Sub Cat 1</NavLink></li>
@@ -98,13 +100,14 @@ export default function HorizontalNavBar({ user, handleLogout }) {
         {user ?
           <ul>
             <li><NavLink to="/">Home</NavLink></li>
-            <li><NavLink to="/profiles">Profiles</NavLink></li>
+            {/* <li><NavLink to="/profiles">Profiles</NavLink></li> */}
             <li><NavLink to="" onClick={handleLogout}>LOG OUT</NavLink></li>
-            <li><NavLink to="/change-password">Change Password</NavLink></li>
+            {/* <li><NavLink to="/change-password">Change Password</NavLink></li> */}
             <li><NavLink to="/dashboard">Dashboard</NavLink></li>
             <li><NavLink to="/blog">Blog</NavLink></li>
             <li><NavLink to="/reviews">Reviews</NavLink></li>
             <li><NavLink to="/listings">Listings</NavLink></li>
+            <li><NavLink to="/contact">Contact</NavLink></li>
             <p onClick={handleSubClick}>Metro Areas</p>
               {displaySub &&
                 <>
