@@ -167,3 +167,75 @@
   cursor: pointer;
   background-color: red;
 }
+
+@media only screen and (max-width: 400px) {
+  .container {
+    width: 350px;
+    height: 450px;
+  }
+  
+  .container .bg{
+    height: 325px;
+  }
+  
+  .container img {
+    height: 325px;
+  }
+  
+  .container .price {
+    bottom: 125px;
+  }
+
+  
+  .container .stats h3{
+    margin-top: .5rem;
+  }
+  
+  
+  .container .info {
+    height: 125px;
+  }
+  
+  .container .contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container .contact a{
+    text-align: center;
+  }
+  
+  .container .contact a:hover{
+    background-color: rgb(33, 79, 218);
+  }
+  
+  .container .buttons {
+    top: 125px;
+  }
+  
+  .container .buttons a{
+    width: 150px;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .container .buttons a:hover{
+    background-color: rgb(33, 79, 218);
+  }
+  
+  .container .buttons button{
+    width: 150px;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    text-align: center;
+
+  }
+  
+  .container .buttons button:hover{
+    cursor: pointer;
+    background-color: red;
+  }
+}
