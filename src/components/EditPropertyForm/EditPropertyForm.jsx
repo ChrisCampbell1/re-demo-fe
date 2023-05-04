@@ -182,7 +182,7 @@ export default function EditPropertyForm({ property }) {
           value={formData.listingBrokerage}
         />
       </div>
-      <div className={styles.inputContainer}>
+      <div className={styles.inputContainerCheck}>
         <label htmlFor="featured">Featured</label>
         <input
           type="checkbox"
@@ -192,8 +192,12 @@ export default function EditPropertyForm({ property }) {
           checked={formData.featured ? 'checked' : ''}
         />
       </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="photos">Photos</label>
+      <div className={styles.inputContainerUpload}>
+      {photoData ?
+          <label htmlFor="photos">{photoData.length === 1 ? "1 Photo Selected" : `${photoData.length} Photos Selected`}</label>
+        :
+          <label htmlFor="photos">Select Listing Photos</label>
+        }
         <input
           type="file"
           name="photos"

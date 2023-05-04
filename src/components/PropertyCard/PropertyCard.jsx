@@ -39,6 +39,7 @@ export default function PropertyCard({ property, user, handleDeleteClick }) {
               <h3>{property.address}</h3>
               <p>Beds: {property.beds} | Baths: {property.baths} | Square Feet: {property.squareFeet}</p>
               <p>Represented the {property.type.toLowerCase()}</p>
+              <p>Listed by {property.listingBrokerage}</p>
             </div>
             <div className={styles.contact}>
               <Link to={`/contact`}>Request Info</Link>
