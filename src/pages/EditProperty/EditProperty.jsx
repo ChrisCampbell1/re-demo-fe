@@ -19,7 +19,7 @@ export default function EditProperty() {
   
   return (
     <main className={styles.container}>
-      <h1>Edit Listings</h1>
+      <h1>Edit Listing</h1>
       <EditPropertyForm property={property}/>
     </main>
   )

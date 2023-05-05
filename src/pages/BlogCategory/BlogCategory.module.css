@@ -6,15 +6,23 @@
   align-items: center;
 }
 
+.container h1 {
+  color: white;
+}
+
 .container h4{
   margin-top: 0;
 }
 
 .container a {
   text-decoration: none;
-  color: black;
+  /* color: white; */
 }
 
 .container a:hover{
-  text-decoration: underline;
+  /* text-decoration: underline; */
+}
+
+.container .more {
+  color: white;
 }

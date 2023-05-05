@@ -3,7 +3,7 @@
   height: 30rem;
   position: relative;
   overflow: hidden;
-  /* margin-top: 3rem; */
+  margin-top: 3rem;
 }
 
 .heroContent {
@@ -28,7 +28,7 @@
   height: 100%;
   z-index: 0;
   opacity: 0;
-  filter: brightness(.7);
+  filter: brightness(.5);
   animation-name: fade-zoom;
   animation-duration: 18s;
   animation-iteration-count: infinite;

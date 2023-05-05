@@ -39,7 +39,7 @@ export default function BlogCategory({ user }) {
     <main className={styles.container}>
       <h1>#{category}</h1>
       <Link to={`/blog`}>
-        <h4>All Articles</h4>
+        <h4 className={styles.more}>All Articles</h4>
       </Link>
       {blogs.map((blog) =>
       <BlogArticle blog={blog} key={blog._id} user={user} handleDeleteClick={handleDeleteClick}/>
