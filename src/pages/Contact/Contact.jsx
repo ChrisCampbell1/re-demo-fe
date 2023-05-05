@@ -19,12 +19,6 @@ export default function Contact() {
   const [property, setProperty] = useState(location.state)
   
 
-  // useEffect(() => {
-  //   if(location.state) {
-  //     setProperty(location.state)
-  //   }
-  // }, [])
-
   return (
     <main className={styles.container}>
       <h1>Let's get in touch!</h1>

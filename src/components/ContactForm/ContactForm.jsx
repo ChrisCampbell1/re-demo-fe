@@ -19,22 +19,11 @@ export default function ContactForm({ property }) {
     name: '',
     email: '',
     phone: '',
-    subject: property? `${property.address}` : '',
+    subject: property? `Info request about ${property.address}` : '',
     message: '',
   })
 
-  console.log(property)
-
   const navigate = useNavigate()
-
-  // useEffect(() => {
-  //   const setSubject = () => {
-  //     if(property !== null) {
-  //       setFormData({ ...formData, subject: `${property.address}` })
-  //     }
-  //   }
-  //   setSubject()
-  // }, [])
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -59,6 +48,7 @@ export default function ContactForm({ property }) {
           name="name"
           id="name"
           onChange={handleChange}
+          required
         />
       </div>
       <div className={styles.inputContainer}>
@@ -68,13 +58,14 @@ export default function ContactForm({ property }) {
           name="email"
           id="email"
           onChange={handleChange}
+          required
         />
       </div>
       <div className={styles.inputContainer}>
         <label htmlFor="phone">Phone Number</label>
         <input
           type="tel"
-          minLength="10"
+          // minLength="10"
           // maxLength="10"
           name="phone"
           id="phone"
@@ -99,6 +90,7 @@ export default function ContactForm({ property }) {
           cols="30"
           rows="6"
           onChange={handleChange}
+          required
         ></textarea>
       </div>
       <button>Send</button>

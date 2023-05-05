@@ -20,7 +20,7 @@ body {
   /* font-family: ; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: aliceblue;
+  background-color: rgb(24, 24, 24);
   box-sizing: border-box;
 }
 

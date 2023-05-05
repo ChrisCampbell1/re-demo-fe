@@ -27,7 +27,8 @@ export default function HeroVideo() {
         ></video>
       </div>
       <div className={styles.heroContent}>
-        <h1>Video Heros Are Engaging!</h1>
+        <h1>Your Downtown Denver Specialist</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem delectus commodi totam dolore mollitia veritatis doloribus, quia exercitationem amet, dignissimos molestiae provident dolores laudantium eligendi pariatur enim a quibusdam. Iste.</p>
       </div>
     </div>
   )

@@ -3,7 +3,7 @@
   height: 30rem;
   position: relative;
   overflow: hidden;
-  margin-top: 3rem;
+  /* margin-top: 3rem; */
 }
 
 .heroContent {
@@ -16,6 +16,10 @@
   padding-left: 2rem;
   position: absolute;
   z-index: 1;
+}
+
+.heroContent p {
+  color: white;
 }
 
 .bgFade{

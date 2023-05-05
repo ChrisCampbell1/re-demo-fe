@@ -16,11 +16,12 @@ import styles from './PropertyCard.module.css'
 export default function PropertyCard({ property, user, handleDeleteClick }) {
   
   return (
-      <Link to={`/listing/${property._id}`} state={property} style={{ textDecoration: 'none' }}>
-        <div className={styles.container}>
+    <div className={styles.container}>
+          <Link to={`/listing/${property._id}`} state={property} style={{ textDecoration: 'none' }}>
           <div className={styles.bg}>
             <img src={property.photos[0]} alt={property.address} />
           </div>
+          </Link>
           <div className={styles.overlay}>
             {property.status === 'Active' &&
               <h3 className={styles.active}>{property.status}</h3>
@@ -58,6 +59,5 @@ export default function PropertyCard({ property, user, handleDeleteClick }) {
           </div>
           }
         </div>
-      </Link>
   )
 }
