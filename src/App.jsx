@@ -19,6 +19,7 @@ import EditProperty from './pages/EditProperty/EditProperty'
 import PropertyDetail from './pages/PropertyDetail/PropertyDetail'
 import BlogDetail from './pages/BlogDetail/BlogDetail'
 import Contact from './pages/Contact/Contact'
+import AddOns from './pages/AddOns/AddOns'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -146,6 +147,12 @@ const App = () => {
           path="/contact"
           element={
             <Contact user={user}/>
+          }
+        />
+        <Route
+          path="/addons"
+          element={
+            <AddOns user={user}/>
           }
         />
       </Routes>

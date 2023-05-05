@@ -1,12 +1,72 @@
 .container {
+  width: 100vw;
+  height: calc(100vh - 3rem);
+  /* text-align: center; */
+  /* min-height: 50rem; */
+  display: flex;
+  /* flex-direction: column;
+  justify-content: center; */
+  align-items: center;
+  color: white;
+  background-color: rgb(24, 24, 24);
+  position: relative;
+  margin-top: 3rem;
+
+}
+
+.container .bg {
+  width: 100%;
+  /* min-height: 50rem; */
+  height: 100%;
+  /* z-index: 0; */
   background-image: url('../../assets/photos/cheesman.jpg');
   background-position: center;
   object-fit: cover;
-  width: 100vw;
-  text-align: center;
-  min-height: 20rem;
+  filter: brightness(.5);
+  
+}
+
+/* .heroContent {
+  position: absolute;
+  top: 40%;
+  z-index: 1;
+  margin-left: auto;
+  margin-right: auto;
+  background-blend-mode: soft-light;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  padding-left: 2rem;
+  width: 800px;
+} */
+
+.heroContent {
+  width: 50%;
+  height: 100%;
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-left: 2rem;
+  position: absolute;
+  z-index: 1;
+}
+
+.heroContent p {
   color: white;
+}
+
+@media only screen and (max-width: 875px) {
+  .container{
+    margin-top: 2.5rem;
+    height: calc(100vh - 2.5rem);
+  }
+  
+  .container .heroContent {
+    width: 100%;
+    padding-right: 2rem;
+  }
+
 }

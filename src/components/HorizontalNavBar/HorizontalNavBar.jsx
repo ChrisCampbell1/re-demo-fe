@@ -52,6 +52,7 @@ export default function HorizontalNavBar({ user, handleLogout }) {
           <li><NavLink to="/reviews">Reviews</NavLink></li>
           <li><NavLink to="/listings">Listings</NavLink></li>
           <li><NavLink to="/contact">Contact</NavLink></li>
+          <li><NavLink to="/addons">Add Ons</NavLink></li>
           {/* <li className={styles.dropdown}><NavLink to="/change-password">Category 1</NavLink>
             <ul className={styles.dropdownContent}>
               <li><NavLink to='#'>Sub Cat 1</NavLink></li>
@@ -108,6 +109,7 @@ export default function HorizontalNavBar({ user, handleLogout }) {
             <li><NavLink to="/reviews">Reviews</NavLink></li>
             <li><NavLink to="/listings">Listings</NavLink></li>
             <li><NavLink to="/contact">Contact</NavLink></li>
+            <li><NavLink to="/addons">Add Ons</NavLink></li>
             <p onClick={handleSubClick}>Metro Areas</p>
               {displaySub &&
                 <>

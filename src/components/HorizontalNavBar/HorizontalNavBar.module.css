@@ -34,6 +34,7 @@
   padding: 1rem;
   font-weight: bold;
   text-transform: uppercase;
+  /* margin-top: 1rem; */
 }
 
 .container a:hover {
@@ -130,6 +131,9 @@ ul li ul:hover{
     color: white;
     font-weight: bold;
     cursor: pointer;
+    text-transform: uppercase;
+    margin-top: .5rem;
+    color: rgb(104, 139, 245);
   }
 
   .mobileLinks ul{
@@ -142,6 +146,12 @@ ul li ul:hover{
     color: white;
     text-decoration: none;
     font-weight: bold;
+    text-transform: uppercase;
+    /* margin-top: 1rem; */
+  }
+
+  .mobileLinks li {
+    margin-top: .5rem;
   }
 
 }

@@ -76,5 +76,12 @@
 @media only screen and (max-width: 875px) {
   .container{
     margin-top: 2.5rem;
+    height: calc(100vh - 2.5rem);
   }
+  
+  .container .heroContent {
+    width: 100%;
+    padding-right: 2rem;
+  }
+
 }
