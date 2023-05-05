@@ -63,3 +63,49 @@
   text-align: center;
   color: white;
 }
+
+@media only screen and (max-width: 400px) {
+  .container .about {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    /* height: 30rem; */
+    height: auto;
+    background-color: rgb(24, 24, 24);
+  }
+
+  .about .headshot,.bio{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .about .headshot img{
+    width: 75%;
+    height: 75%;
+    object-fit: cover;
+  }
+
+  .about .headshot {
+    margin-top: 3rem;
+  }
+  
+  .about .bio {
+    padding: 0 4rem;
+    color: white;
+  }
+
+  .container h2 {
+    font-size: 32px;
+  }
+  
+  .container .listings .listingContainer {
+    height: auto;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+}
