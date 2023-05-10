@@ -40,7 +40,6 @@ export default function NewPropertyForm() {
 
   const handleCheckboxChange = (e) => {
     setFormData({ ...formData, featured: !formData.featured })
-    console.log(formData.featured)
   }
 
   const handleChangePhoto = (e) => {
