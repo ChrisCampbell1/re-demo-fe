@@ -1,5 +1,5 @@
 // npm modules
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 
 // page components
@@ -20,6 +20,8 @@ import PropertyDetail from './pages/PropertyDetail/PropertyDetail'
 import BlogDetail from './pages/BlogDetail/BlogDetail'
 import Contact from './pages/Contact/Contact'
 import AddOns from './pages/AddOns/AddOns'
+import Neighborhoods from './pages/Neighborhoods/Neighborhoods'
+import NeighborhoodDetail from './pages/NeighborhoodDetail/NeighborhoodDetail'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -28,12 +30,14 @@ import HorizontalNavBar from './components/HorizontalNavBar/HorizontalNavBar'
 
 // services
 import * as authService from './services/authService'
+import * as neighborhoodService from './services/neighborhoodService'
 
 // styles
 import './App.css'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
+  const [neighborhoods, setNeighborhoods] = useState(null)
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -46,9 +50,21 @@ const App = () => {
     setUser(authService.getUser())
   }
 
+  useEffect(() => {
+    const fetchNeighborhoods = async () => {
+      const neighborhoods = await neighborhoodService.getAllNeighborhoods()
+      setNeighborhoods(neighborhoods)
+    }
+    fetchNeighborhoods()
+  }, [])
+
   return (
     <>
-      <HorizontalNavBar user={user} handleLogout={handleLogout} />
+      <HorizontalNavBar
+        user={user}
+        handleLogout={handleLogout}
+        neighborhoods={neighborhoods}  
+      />
       <Routes>
         <Route path="/" element={<Landing user={user} />} />
         <Route
@@ -94,25 +110,25 @@ const App = () => {
         <Route
           path="/blog"
           element={
-            <Blog user={user}/>
+            <Blog user={user} />
           }
         />
         <Route
           path="/blog/:category"
           element={
-            <BlogCategory user={user}/>
+            <BlogCategory user={user} />
           }
         />
         <Route
           path="/blog/view/:id"
           element={
-            <BlogDetail user={user}/>
+            <BlogDetail user={user} />
           }
         />
         <Route
           path="/reviews"
           element={
-            <Reviews user={user}/>
+            <Reviews user={user} />
           }
         />
         <Route
@@ -126,7 +142,7 @@ const App = () => {
         <Route
           path="/listings"
           element={
-            <Properties user={user}/>
+            <Properties user={user} />
           }
         />
         <Route
@@ -140,21 +156,43 @@ const App = () => {
         <Route
           path="/listing/:id"
           element={
-            <PropertyDetail user={user}/>
+            <PropertyDetail user={user} />
           }
         />
         <Route
           path="/contact"
           element={
-            <Contact user={user}/>
+            <Contact user={user} />
           }
         />
         <Route
           path="/addons"
           element={
-            <AddOns user={user}/>
+            <AddOns user={user} />
           }
         />
+        {neighborhoods &&
+          <>
+            <Route
+              path="/neighborhoods"
+              element={
+                <Neighborhoods user={user} />
+              }
+            />
+            {neighborhoods.map((neighborhood) =>
+            <Route 
+              key={neighborhood._id}
+              path={`/${neighborhood.slug}-real-estate`}
+              element={
+                <NeighborhoodDetail 
+                  user={user}
+                  neighborhood={neighborhood}
+                />
+              }
+            />
+            )}
+          </>
+        }
       </Routes>
     </>
   )
