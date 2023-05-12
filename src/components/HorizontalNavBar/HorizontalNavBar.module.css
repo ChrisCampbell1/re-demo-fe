@@ -154,6 +154,10 @@ ul li ul:hover{
     display: none;
   }
 
+  .containerDark{
+    display: none;
+  }
+
   .mobileNav{
     display: flex;
     flex-direction: column;

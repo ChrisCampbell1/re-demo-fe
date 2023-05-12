@@ -281,4 +281,67 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 1rem;
   } */
 
+  .container .hero .title p{
+    font-size: 3rem;
+  }
+
+  .container .statContainer {
+    flex-direction: column;
+  }
+
+  .container .statContainer .statName {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  .container .statContainer .statNumber {
+    font-size: 1.5rem;
+  }
+
+  .container .info{
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .container .info .about{
+    width: 100%;
+  }
+
+  .container .info .map{
+    width: 100%
+  }
+
+  .container .sideBySide{
+    flex-direction: column;
+  }
+
+  .container .contact {
+    margin-right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .contaner .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    margin-right: 0;
+  }
+
+  .container .sideBySide .inputContainer {
+    width: 100%;
+  }
+  
+  .container .contact h1 {
+    text-align: center;
+    padding: .5rem;
+  }
+
+  .container .confirmation {
+    left: 0;
+  }
+  
 }
