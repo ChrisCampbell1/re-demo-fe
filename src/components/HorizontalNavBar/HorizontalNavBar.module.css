@@ -9,8 +9,10 @@
   top: 0;
   width: 100vw;
   /* color: white; */
-  backdrop-filter: brightness(60%);
+  /* backdrop-filter: brightness(60%); */
   /* background-color: rgb(24, 24, 24); */
+  background-color: rgba(24, 24, 24, 0.6);
+
 }
 
 .containerDark{
@@ -96,14 +98,27 @@
   position: absolute;
   margin-top: 1rem;
   transition: all .5s ease;
+  /* width: 174px; */
+
 }
 
-.dropdownContent li {
+.container .dropdownContent li {
   display: block;
   position: relative;
   padding: 1rem;
-  background-color: blanchedalmond;
-  width: 5rem;
+  /* background-color: blanchedalmond; */
+  background-color: rgba(24, 24, 24, 0.6);
+  /* backdrop-filter: brightness(60%); */
+  /* width: 174px; */
+}
+
+.containerDark .dropdownContent li {
+  display: block;
+  position: relative;
+  padding: 1rem;
+  /* background-color: blanchedalmond; */
+  background-color: rgb(24, 24, 24);
+  /* width: 5rem; */
 }
 
 ul li:hover > ul,
