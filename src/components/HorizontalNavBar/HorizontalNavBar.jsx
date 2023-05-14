@@ -69,7 +69,7 @@ export default function HorizontalNavBar({ user, handleLogout, neighborhoods }) 
                     <li><NavLink className={styles.dropdown} to="/neighborhoods">Neighborhoods</NavLink>
                       <ul className={styles.dropdownContent}>
                         {neighborhoods.map((neighborhood) =>
-                          <li key={neighborhood._id}><NavLink to={`/${neighborhood.slug}-real-estate`} state={neighborhood}>{neighborhood.name}</NavLink></li>
+                          <li key={neighborhood._id}><NavLink to={`/${neighborhood.slug}`} state={neighborhood}>{neighborhood.name}</NavLink></li>
                         )}
                       </ul>
                     </li>
@@ -102,7 +102,7 @@ export default function HorizontalNavBar({ user, handleLogout, neighborhoods }) 
                     <li><NavLink className={styles.dropdown} to="/neighborhoods">Neighborhoods</NavLink>
                       <ul className={styles.dropdownContent}>
                         {neighborhoods.map((neighborhood) =>
-                          <li key={neighborhood._id}><NavLink to={`/${neighborhood.slug}-real-estate`} state={neighborhood}>{neighborhood.name}</NavLink></li>
+                          <li key={neighborhood._id}><NavLink to={`/${neighborhood.slug}`} state={neighborhood}>{neighborhood.name}</NavLink></li>
                         )}
                       </ul>
                     </li>
@@ -144,7 +144,7 @@ export default function HorizontalNavBar({ user, handleLogout, neighborhoods }) 
                     <li><NavLink className={styles.dropdown} to="/neighborhoods">Neighborhoods</NavLink>
                       <ul className={styles.dropdownContent}>
                         {neighborhoods.map((neighborhood) =>
-                          <li key={neighborhood._id}><NavLink to={`/${neighborhood.slug}-real-estate`} state={neighborhood}>{neighborhood.name}</NavLink></li>
+                          <li key={neighborhood._id}><NavLink to={`/${neighborhood.slug}`} state={neighborhood}>{neighborhood.name}</NavLink></li>
                         )}
                       </ul>
                     </li>
@@ -177,7 +177,7 @@ export default function HorizontalNavBar({ user, handleLogout, neighborhoods }) 
                     <li><NavLink className={styles.dropdown} to="/neighborhoods">Neighborhoods</NavLink>
                       <ul className={styles.dropdownContent}>
                         {neighborhoods.map((neighborhood) =>
-                          <li key={neighborhood._id}><NavLink to={`/${neighborhood.slug}-real-estate`} state={neighborhood}>{neighborhood.name}</NavLink></li>
+                          <li key={neighborhood._id}><NavLink to={`/${neighborhood.slug}`} state={neighborhood}>{neighborhood.name}</NavLink></li>
                         )}
                       </ul>
                     </li>

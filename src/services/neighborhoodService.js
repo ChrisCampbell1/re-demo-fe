@@ -119,4 +119,15 @@ const updatePhoto = async(photos, neighborhoodId) => {
   }
 }
 
-export { createNeighborhood, addPhoto, getAllNeighborhoods, deleteNeighborhood, updateNeighborhood, updatePhoto, addHero, addMap }
+const fetchNeighborhood = async(slug) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${slug}`, {
+      method: 'GET'
+    })
+    return res.json()
+  } catch (err) {
+    throw err
+  }
+}
+
+export { createNeighborhood, addPhoto, getAllNeighborhoods, deleteNeighborhood, updateNeighborhood, updatePhoto, addHero, addMap, fetchNeighborhood }

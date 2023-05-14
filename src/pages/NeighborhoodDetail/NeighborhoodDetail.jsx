@@ -4,13 +4,13 @@
 
 // npm modules
 import { useLocation } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 // components
 
 
 // services
-
+import * as neighborhoodService from '../../services/neighborhoodService'
 
 // styles
 import styles from './NeighborhoodDetail.module.css'
@@ -20,7 +20,17 @@ import styles from './NeighborhoodDetail.module.css'
 
 export default function NeighborhoodDetail() {
   const location = useLocation()
-  const neighborhood = location.state
+  const slug = location.pathname.slice(1)
+
+  const [neighborhood, setNeighborhood] = useState(null)
+  
+  useEffect(() => {
+    const getNeighborhood = async (slug) => {
+      const neighborhood = await neighborhoodService.fetchNeighborhood(slug)
+      setNeighborhood(neighborhood[0])
+    }
+    getNeighborhood(slug)
+  },[slug])
 
   const [formData, setFormData] = useState({
     name: '',

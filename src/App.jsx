@@ -182,7 +182,7 @@ const App = () => {
             {neighborhoods.map((neighborhood) =>
             <Route 
               key={neighborhood._id}
-              path={`/${neighborhood.slug}-real-estate`}
+              path={`/${neighborhood.slug}`}
               element={
                 <NeighborhoodDetail 
                   user={user}
