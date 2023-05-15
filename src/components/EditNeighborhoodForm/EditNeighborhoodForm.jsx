@@ -9,13 +9,14 @@ import { useNavigate } from 'react-router-dom'
 import * as neighborhoodService from '../../services/neighborhoodService'
 
 // styles
-import styles from './NewNeighborhoodForm.module.css'
+import styles from './EditNeighborhoodForm.module.css'
 
 // component
 
 
-export default function NewNeighborhoodForm() {
+export default function EditNeighborhoodForm({ neighborhood, setNeighborhoods, neighborhoods }) {
   const [slugs, setSlugs] = useState([])
+  const [currentSlug, setCurrentSlug] = useState(neighborhood.slug)
 
   useEffect(() => {
     const fetchSlugs = async () => {
@@ -30,16 +31,16 @@ export default function NewNeighborhoodForm() {
   }, [])
   
   const [formData, setFormData] = useState({
-    name: '',
-    about: '',
-    stat1Name: null,
-    stat1Number: null,
-    stat2Name: null,
-    stat2Number: null,
-    stat3Name: null,
-    stat3Number: null,
-    stat4Name: null,
-    stat4Number: null,
+    name: neighborhood.name,
+    about: neighborhood.about,
+    stat1Name: neighborhood.stat1[0],
+    stat1Number: neighborhood.stat1[1],
+    stat2Name: neighborhood.stat2[0],
+    stat2Number: neighborhood.stat2[1],
+    stat3Name: neighborhood.stat3[0],
+    stat3Number: neighborhood.stat3[1],
+    stat4Name: neighborhood.stat4[0],
+    stat4Number: neighborhood.stat4[1],
   })
 
   const [photoData, setPhotoData] = useState(null)
@@ -67,19 +68,25 @@ export default function NewNeighborhoodForm() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const slug = formData.name.replaceAll(/\s/g, "-")
-    if(slugs.includes(slug)){
+    if(currentSlug !== slug && slugs.includes(slug)){
       window.alert("This neighborhood page already exists, select a unique name or edit the existing neighborhood page")
       return
     }
-    const neighborhood = await neighborhoodService.createNeighborhood(formData)
-    // neighborhoodService.addPhoto(photoData, neighborhood._id)
-    neighborhoodService.addHero(heroData, neighborhood._id)
-    neighborhoodService.addMap(mapData, neighborhood._id)
-    navigate('/')
+    const updatedNeighborhood = await neighborhoodService.updateNeighborhood(neighborhood._id ,formData)
+    if (heroData !== null){
+      neighborhoodService.addHero(heroData, updatedNeighborhood._id)
+    }
+    if (mapData !== null) {
+      neighborhoodService.addMap(mapData, updatedNeighborhood._id)
+    }
+    const updatedNeighborhoods = neighborhoods.filter((el) => el._id !== updatedNeighborhood._id)
+    updatedNeighborhoods.push(updatedNeighborhood)
+    setNeighborhoods(updatedNeighborhoods)
+    navigate(`/${updatedNeighborhood.slug}`)
   }
-
+  
   return (
-    <form
+<form
       autoComplete="off"
       onSubmit={handleSubmit}
       className={styles.container}
@@ -91,6 +98,7 @@ export default function NewNeighborhoodForm() {
           name="name"
           id="name"
           onChange={handleChange}
+          value={formData.name}
         />
       </div>
       <div className={styles.inputContainer}>
@@ -101,6 +109,7 @@ export default function NewNeighborhoodForm() {
           cols="30"
           rows="6"
           onChange={handleChange}
+          value={formData.about}
         ></textarea>
       </div>
       <div className={styles.sideBySide}>
@@ -111,6 +120,7 @@ export default function NewNeighborhoodForm() {
             name="stat1Name"
             id="stat1Name"
             onChange={handleChange}
+            value={formData.stat1Name}
           />
         </div>
         <div className={styles.inputContainer}>
@@ -120,6 +130,7 @@ export default function NewNeighborhoodForm() {
             name="stat1Number"
             id="stat1Number"
             onChange={handleChange}
+            value={formData.stat1Number}
           />
         </div>
       </div>
@@ -131,6 +142,7 @@ export default function NewNeighborhoodForm() {
             name="stat2Name"
             id="stat2Name"
             onChange={handleChange}
+            value={formData.stat2Name}
           />
         </div>
         <div className={styles.inputContainer}>
@@ -140,6 +152,7 @@ export default function NewNeighborhoodForm() {
             name="stat2Number"
             id="stat2Number"
             onChange={handleChange}
+            value={formData.stat2Number}
           />
         </div>
       </div>
@@ -151,6 +164,7 @@ export default function NewNeighborhoodForm() {
             name="stat3Name"
             id="stat3Name"
             onChange={handleChange}
+            value={formData.stat3Name}
           />
         </div>
         <div className={styles.inputContainer}>
@@ -160,6 +174,7 @@ export default function NewNeighborhoodForm() {
             name="stat3Number"
             id="stat3Number"
             onChange={handleChange}
+            value={formData.stat3Number}
           />
         </div>
       </div>
@@ -171,6 +186,7 @@ export default function NewNeighborhoodForm() {
             name="stat4Name"
             id="stat4Name"
             onChange={handleChange}
+            value={formData.stat4Name}
           />
         </div>
         <div className={styles.inputContainer}>
@@ -180,6 +196,7 @@ export default function NewNeighborhoodForm() {
             name="stat4Number"
             id="stat4Number"
             onChange={handleChange}
+            value={formData.stat4Number}
           />
         </div>
       </div>
@@ -229,7 +246,7 @@ export default function NewNeighborhoodForm() {
           accept="image/*"
         />
       </div> */}
-      <button type='submit'>Create Neighborhood Page</button>
+      <button type='submit'>Update Neighborhood Page</button>
     </form>
   )
 }

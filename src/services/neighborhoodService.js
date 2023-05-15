@@ -119,6 +119,7 @@ const updatePhoto = async(photos, neighborhoodId) => {
   }
 }
 
+
 const fetchNeighborhood = async(slug) => {
   try {
     const res = await fetch(`${BASE_URL}/${slug}`, {

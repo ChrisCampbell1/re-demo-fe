@@ -30,9 +30,9 @@ const Landing = ({ user }) => {
 
   return (
     <main className={styles.container}>
-      <HeroStatic />
+      {/* <HeroStatic /> */}
       {/* <HeroVideo /> */}
-      {/* <HeroMulti /> */}
+      <HeroMulti />
       <div className={styles.about}>
         <div className={styles.headshot}>
           <img src={headshot} alt="headshot" />

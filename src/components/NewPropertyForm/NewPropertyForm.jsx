@@ -18,6 +18,7 @@ export default function NewPropertyForm() {
   const [formData, setFormData] = useState({
     mlsId: '',
     address: '',
+    slug: '',
     description: '',
     beds: '',
     baths: '',
@@ -75,6 +76,16 @@ export default function NewPropertyForm() {
           name="address"
           id="address"
           onChange={handleChange}
+        />
+      </div>
+      <div className={styles.inputContainer}>
+        <label htmlFor="slug">Custom Shareable Link</label>  
+        <input
+          type="text"
+          name="slug"
+          id="slug"
+          onChange={handleChange}
+          placeholder="what do you want after the / in your shareable url? e.g. 123-Main"
         />
       </div>
       <div className={styles.inputContainer}>

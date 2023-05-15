@@ -3,7 +3,7 @@
 
 
 // npm modules
-import { useLocation } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 // components
@@ -18,7 +18,7 @@ import styles from './NeighborhoodDetail.module.css'
 // component
 
 
-export default function NeighborhoodDetail() {
+export default function NeighborhoodDetail({ user }) {
   const location = useLocation()
   const slug = location.pathname.slice(1)
 
@@ -30,7 +30,7 @@ export default function NeighborhoodDetail() {
       setNeighborhood(neighborhood[0])
     }
     getNeighborhood(slug)
-  },[slug])
+  },[])
 
   const [formData, setFormData] = useState({
     name: '',
@@ -61,7 +61,15 @@ export default function NeighborhoodDetail() {
           <div className={styles.bg}>
             <img src={neighborhood.hero} alt={`hero of ${neighborhood.name}`} />
           </div>
-          <div className={styles.title}><p>{neighborhood.name}</p></div>
+          <div className={styles.title}>
+            <p>{neighborhood.name}</p>
+            {user &&
+              <div className={styles.buttons}>
+                <Link to={`/neighborhoods/edit/${neighborhood._id}`} className={styles.btn} state={neighborhood}>Edit</Link>
+                <button type='button'>Delete</button>
+              </div>
+            }
+          </div>
         </div>
         <div className={styles.statContainer}>
           {neighborhood.stat1.length !== 0 &&

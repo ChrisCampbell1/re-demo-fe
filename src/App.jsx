@@ -22,6 +22,7 @@ import Contact from './pages/Contact/Contact'
 import AddOns from './pages/AddOns/AddOns'
 import Neighborhoods from './pages/Neighborhoods/Neighborhoods'
 import NeighborhoodDetail from './pages/NeighborhoodDetail/NeighborhoodDetail'
+import EditNeighborhood from './pages/EditNeighborhood/EditNeighborhood'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -63,7 +64,7 @@ const App = () => {
       <HorizontalNavBar
         user={user}
         handleLogout={handleLogout}
-        neighborhoods={neighborhoods}  
+        neighborhoods={neighborhoods}
       />
       <Routes>
         <Route path="/" element={<Landing user={user} />} />
@@ -180,19 +181,27 @@ const App = () => {
               }
             />
             {neighborhoods.map((neighborhood) =>
-            <Route 
-              key={neighborhood._id}
-              path={`/${neighborhood.slug}`}
-              element={
-                <NeighborhoodDetail 
-                  user={user}
-                  neighborhood={neighborhood}
-                />
-              }
-            />
+              <Route
+                key={neighborhood._id}
+                path={`/${neighborhood.slug}`}
+                element={
+                  <NeighborhoodDetail
+                    user={user}
+                    neighborhood={neighborhood}
+                  />
+                }
+              />
             )}
           </>
         }
+        <Route
+          path="/neighborhoods/edit/:id"
+          element={
+            <ProtectedRoute user={user}>
+              <EditNeighborhood setNeighborhoods={setNeighborhoods} neighborhoods={neighborhoods}/>
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </>
   )

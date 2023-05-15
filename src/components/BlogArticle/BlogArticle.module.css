@@ -12,6 +12,10 @@
   /* box-shadow:  2px 2px 10px grey; */
 }
 
+.container p {
+  color: black;
+}
+
 .container img {
   width: calc(100vw * .8 - 4rem);
   height: calc(100vw * .8 / 2 - 4rem);
