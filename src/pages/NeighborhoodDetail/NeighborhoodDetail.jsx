@@ -32,7 +32,7 @@ export default function NeighborhoodDetail({ user, neighborhoods, setNeighborhoo
       setNeighborhood(neighborhood[0])
     }
     getNeighborhood(slug)
-  },[])
+  },[location])
 
   const [formData, setFormData] = useState({
     name: '',

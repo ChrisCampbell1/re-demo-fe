@@ -79,8 +79,8 @@ export default function EditNeighborhoodForm({ neighborhood, setNeighborhoods, n
       await neighborhoodService.addMap(mapData, neighborhood._id)
     }
     const updatedNeighborhood = await neighborhoodService.updateNeighborhood(neighborhood._id ,formData)
-    const updatedNeighborhoods = neighborhoods.filter((el) => el._id !== updatedNeighborhood._id)
-    updatedNeighborhoods.push(updatedNeighborhood)
+    let updatedNeighborhoods = neighborhoods.filter((el) => el._id !== updatedNeighborhood._id)
+    updatedNeighborhoods = [...neighborhoods, updatedNeighborhood]
     setNeighborhoods(updatedNeighborhoods)
     navigate(`/${updatedNeighborhood.slug}`)
   }
