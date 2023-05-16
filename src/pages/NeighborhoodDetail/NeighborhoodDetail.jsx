@@ -3,7 +3,7 @@
 
 
 // npm modules
-import { useLocation, Link } from 'react-router-dom'
+import { useLocation, Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 // components
@@ -18,7 +18,9 @@ import styles from './NeighborhoodDetail.module.css'
 // component
 
 
-export default function NeighborhoodDetail({ user }) {
+export default function NeighborhoodDetail({ user, neighborhoods, setNeighborhoods }) {
+  const navigate = useNavigate()
+  
   const location = useLocation()
   const slug = location.pathname.slice(1)
 
@@ -53,6 +55,12 @@ export default function NeighborhoodDetail({ user }) {
     setPopup(!popup)
   }
   
+  const handleDeleteClick = async (id) => {
+    const deletedNeighborhood = await neighborhoodService.deleteNeighborhood(id)
+    const updatedNeighborhoods = neighborhoods.filter((el) => el._id !== deletedNeighborhood._id)
+    setNeighborhoods(updatedNeighborhoods)
+    navigate(`/neighborhoods`)
+  } 
 
   if(neighborhood){
     return (
@@ -66,7 +74,7 @@ export default function NeighborhoodDetail({ user }) {
             {user &&
               <div className={styles.buttons}>
                 <Link to={`/neighborhoods/edit/${neighborhood._id}`} className={styles.btn} state={neighborhood}>Edit</Link>
-                <button type='button'>Delete</button>
+                <button type='button' onClick={() => handleDeleteClick(neighborhood._id)}>Delete</button>
               </div>
             }
           </div>

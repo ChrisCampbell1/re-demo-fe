@@ -72,13 +72,13 @@ export default function EditNeighborhoodForm({ neighborhood, setNeighborhoods, n
       window.alert("This neighborhood page already exists, select a unique name or edit the existing neighborhood page")
       return
     }
-    const updatedNeighborhood = await neighborhoodService.updateNeighborhood(neighborhood._id ,formData)
     if (heroData !== null){
-      neighborhoodService.addHero(heroData, updatedNeighborhood._id)
+      await neighborhoodService.addHero(heroData, neighborhood._id)
     }
     if (mapData !== null) {
-      neighborhoodService.addMap(mapData, updatedNeighborhood._id)
+      await neighborhoodService.addMap(mapData, neighborhood._id)
     }
+    const updatedNeighborhood = await neighborhoodService.updateNeighborhood(neighborhood._id ,formData)
     const updatedNeighborhoods = neighborhoods.filter((el) => el._id !== updatedNeighborhood._id)
     updatedNeighborhoods.push(updatedNeighborhood)
     setNeighborhoods(updatedNeighborhoods)

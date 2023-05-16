@@ -14,7 +14,7 @@ import styles from './NewNeighborhoodForm.module.css'
 // component
 
 
-export default function NewNeighborhoodForm() {
+export default function NewNeighborhoodForm({ neighborhoods, setNeighborhoods }) {
   const [slugs, setSlugs] = useState([])
 
   useEffect(() => {
@@ -73,9 +73,11 @@ export default function NewNeighborhoodForm() {
     }
     const neighborhood = await neighborhoodService.createNeighborhood(formData)
     // neighborhoodService.addPhoto(photoData, neighborhood._id)
-    neighborhoodService.addHero(heroData, neighborhood._id)
-    neighborhoodService.addMap(mapData, neighborhood._id)
-    navigate('/')
+    await neighborhoodService.addHero(heroData, neighborhood._id)
+    const updatedNeighborhood = await neighborhoodService.addMap(mapData, neighborhood._id)
+    const updatedNeighborhoods = [...neighborhoods, updatedNeighborhood]
+    setNeighborhoods(updatedNeighborhoods)
+    navigate(`/${neighborhood.slug}`)
   }
 
   return (

@@ -16,7 +16,7 @@ import styles from './Dashboard.module.css'
 // component
 
 
-export default function Dashboard() {
+export default function Dashboard({ neighborhoods, setNeighborhoods }) {
   const [blog, setBlog] = useState(false)
   const [property, setProperty] = useState(false)
   const [review, setReview] = useState(false)
@@ -67,7 +67,10 @@ export default function Dashboard() {
       }
       <h2 onClick={() => handleNeighborhoodClick()}>New Neighborhood Page</h2>
       {neighborhood &&
-        <NewNeighborhoodForm />
+        <NewNeighborhoodForm 
+        setNeighborhoods={setNeighborhoods}
+        neighborhoods={neighborhoods}
+        />
       }
     </main>
   )

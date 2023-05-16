@@ -96,7 +96,10 @@ const App = () => {
           path="/dashboard"
           element={
             <ProtectedRoute user={user}>
-              <Dashboard />
+              <Dashboard
+                setNeighborhoods={setNeighborhoods}
+                neighborhoods={neighborhoods}
+              />
             </ProtectedRoute>
           }
         />
@@ -188,6 +191,8 @@ const App = () => {
                   <NeighborhoodDetail
                     user={user}
                     neighborhood={neighborhood}
+                    setNeighborhoods={setNeighborhoods}
+                    neighborhoods={neighborhoods}
                   />
                 }
               />
@@ -198,7 +203,7 @@ const App = () => {
           path="/neighborhoods/edit/:id"
           element={
             <ProtectedRoute user={user}>
-              <EditNeighborhood setNeighborhoods={setNeighborhoods} neighborhoods={neighborhoods}/>
+              <EditNeighborhood setNeighborhoods={setNeighborhoods} neighborhoods={neighborhoods} />
             </ProtectedRoute>
           }
         />
