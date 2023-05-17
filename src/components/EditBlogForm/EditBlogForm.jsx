@@ -1,5 +1,5 @@
 // npm modules
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import ReactQuill from 'react-quill'
 
@@ -19,6 +19,21 @@ import 'react-quill/dist/quill.snow.css'
 export default function EditBlogForm({ blog }) {
   
   // const [blog, setBlog] = useState({})
+
+  const [slugs, setSlugs] = useState([])
+  const [currentSlug, setCurrentSlug] = useState(blog.slug)
+
+  useEffect(() => {
+    const fetchSlugs = async () => {
+      const blogs = await blogService.getAllBlogs()
+      const slugs = []
+      blogs.forEach((blog) => {
+        slugs.push(blog.slug)
+      })
+      setSlugs(slugs)
+    }
+    fetchSlugs()
+  }, [])
   
   const [formData, setFormData] = useState({
     title: blog.title,
@@ -57,6 +72,11 @@ export default function EditBlogForm({ blog }) {
   const handleSubmit = async(e) => {
     formData.body = convertedText
     e.preventDefault()
+    const slug = formData.title.replaceAll(/\s/g, "-")
+    if(currentSlug !== slug && slugs.includes(slug)){
+      window.alert("A blog post with this title already exists, please select a unique title")
+      return
+    }
     const updatedBlog = await blogService.updateBlog(blog._id ,formData)
     if(photoData !== null){
       await blogService.addPhoto(photoData, updatedBlog._id)

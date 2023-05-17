@@ -1,5 +1,6 @@
 // npm modules
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 // components
 import BlogArticle from '../../components/BlogArticle/BlogArticle'
@@ -15,6 +16,8 @@ import styles from './Blog.module.css'
 
 
 export default function Blog({ user }) {
+  const navigate = useNavigate()
+  
   const [blogs, setBlogs] = useState(null)
 
   useEffect(() => {
@@ -29,6 +32,7 @@ export default function Blog({ user }) {
     const deletedBlog = await blogService.deleteBlog(id)
     const updatedBlogs = blogs.filter((blog) => blog._id !== deletedBlog._id)
     setBlogs(updatedBlogs)
+    navigate(`/blog`)
   }
   
   return (

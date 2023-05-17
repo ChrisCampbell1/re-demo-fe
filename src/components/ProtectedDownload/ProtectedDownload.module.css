@@ -3,7 +3,11 @@
   margin-bottom: 2rem;
 }
 
-.container h3,p {
+.container h3 {
+  color: white;
+}
+
+.container p {
   color: white;
 }
 

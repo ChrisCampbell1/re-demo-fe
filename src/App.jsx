@@ -118,13 +118,13 @@ const App = () => {
           }
         />
         <Route
-          path="/blog/:category"
+          path="/blog/category/:category"
           element={
             <BlogCategory user={user} />
           }
         />
         <Route
-          path="/blog/view/:id"
+          path="/blog/:slug"
           element={
             <BlogDetail user={user} />
           }

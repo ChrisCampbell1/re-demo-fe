@@ -1,5 +1,5 @@
 // npm modules
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import ReactQuill from 'react-quill'
 
@@ -17,6 +17,20 @@ import 'react-quill/dist/quill.snow.css'
 
 
 export default function NewBlogForm() {
+  const [slugs, setSlugs] = useState([])
+
+  useEffect(() => {
+    const fetchSlugs = async () => {
+      const blogs = await blogService.getAllBlogs()
+      const slugs = []
+      blogs.forEach((blog) => {
+        slugs.push(blog.slug)
+      })
+      setSlugs(slugs)
+    }
+    fetchSlugs()
+  }, [])
+  
   const [formData, setFormData] = useState({
     title: '',
     tags: [],
@@ -57,11 +71,13 @@ export default function NewBlogForm() {
   }
 
   const handleSubmit = async (e) => {
-    console.log(convertedText)
-    console.log(typeof convertedText)
-    formData.body = convertedText
-    console.log(formData)
     e.preventDefault()
+    const slug = formData.title.replaceAll(/\s/g, "-")
+    if(slugs.includes(slug)){
+      window.alert("A blog post with this title already exists, please select a unique title")
+      return
+    }
+    formData.body = convertedText
     const blog = await blogService.createBlog(formData)
     await blogService.addPhoto(photoData, blog._id)
     navigate('/blog')

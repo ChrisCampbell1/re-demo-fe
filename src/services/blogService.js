@@ -56,9 +56,9 @@ const deleteBlog = async(id) => {
   }
 }
 
-const getBlog = async(id) => {
+const getBlog = async(slug) => {
   try {
-    const res = await fetch(`${BASE_URL}/${id}`, {
+    const res = await fetch(`${BASE_URL}/${slug}`, {
       method: 'GET'
     })
     return res.json()

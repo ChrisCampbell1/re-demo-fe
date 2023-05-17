@@ -19,7 +19,7 @@ export default function BlogArticle({ blog, user, handleDeleteClick }) {
   return (
     <article className={styles.container}>
       <title>{blog.title}</title>
-      <Link to={`/blog/view/${blog._id}`} className={styles.detailLink} state={blog}>
+      <Link to={`/blog/${blog.slug}`} className={styles.detailLink} state={blog}>
         <h2>{blog.title}</h2>
       </Link>
       <img src={blog.photo} alt="" />

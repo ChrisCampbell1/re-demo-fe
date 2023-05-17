@@ -17,7 +17,7 @@ export default function BlogTag({ tag }) {
   return (
     <div className={styles.container}>
       {/* <p>#{tag}</p> */}
-      <Link to={`/blog/${tag}`} state={tag}>#{tag}</Link>
+      <Link to={`/blog/category/${tag}`} state={tag}>#{tag}</Link>
     </div>
   )
 }
