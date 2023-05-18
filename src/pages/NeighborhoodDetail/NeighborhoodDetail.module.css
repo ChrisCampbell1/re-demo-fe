@@ -11,6 +11,10 @@
   margin-top: 0;
 }
 
+.container p {
+  color: white
+}
+
 .container .hero {
   position: relative;
   height: calc(100vh - 3rem);

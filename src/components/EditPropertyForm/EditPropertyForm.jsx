@@ -1,5 +1,5 @@
 // npm modules
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 // components
@@ -15,10 +15,26 @@ import styles from './EditPropertyForm.module.css'
 // component
 
 
-export default function EditPropertyForm({ property }) {
+export default function EditPropertyForm({ property, properties, setProperties }) {
+  const [slugs, setSlugs] = useState([])
+  const [currentSlug, setCurrentSlug] = useState(property.slug)
+
+  useEffect(() => {
+    const fetchSlugs = async () => {
+      const properties = await propertyService.getAllProperties()
+      const slugs = []
+      properties.forEach((property) => {
+        slugs.push(property.slug)
+      })
+      setSlugs(slugs)
+    }
+    fetchSlugs()
+  }, [])
+  
   const [formData, setFormData] = useState({
     mlsId: property.mlsId,
     address: property.address,
+    slug: property.slug,
     description: property.description,
     beds: property.beds,
     baths: property.baths,
@@ -44,16 +60,38 @@ export default function EditPropertyForm({ property }) {
     console.log(formData.featured)
   }
 
+  const format = /[ `!@#$%^&*()_+\=\[\]{};':"\\|,.<>\/?~]/
+
+  const validateSlug = () => {
+    if(formData.slug.match(format)){
+      return true
+    } else {
+      return false
+    }
+  }
+
   const handleChangePhoto = (e) => {
     setPhotoData(e.target.files)
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const updatedProperty = await propertyService.updateProperty(property._id ,formData)
-    if(photoData !== null){
-      await propertyService.updatePhoto(photoData, updatedProperty._id)
+    if(validateSlug()){
+      window.alert("Sharable link can only include letters, numbers and '-'")
+      return
     }
+    const slug = formData.slug
+    if(currentSlug !== slug && slugs.includes(slug)){
+      window.alert("A listing already exists with this address, please double check the address you entered.")
+      return
+    }
+    if(photoData !== null){
+      await propertyService.updatePhoto(photoData, property._id)
+    }
+    const updatedProperty = await propertyService.updateProperty(property._id ,formData)
+    let updatedProperties = properties.filter((el) => el._id !== updatedProperty._id)
+    updatedProperties = [...updatedProperties, updatedProperty]
+    setProperties(updatedProperties)
     navigate('/listings')
   }
 
@@ -81,6 +119,17 @@ export default function EditPropertyForm({ property }) {
           id="address"
           onChange={handleChange}
           value={formData.address}
+        />
+      </div>
+      <div className={styles.inputContainer}>
+        <label htmlFor="slug">Custom Shareable Link</label>  
+        <input
+          type="text"
+          name="slug"
+          id="slug"
+          onChange={handleChange}
+          placeholder="what do you want after the / in your shareable url? e.g. 123-Main"
+          value={formData.slug}
         />
       </div>
       <div className={styles.inputContainer}>

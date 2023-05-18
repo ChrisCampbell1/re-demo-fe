@@ -93,4 +93,15 @@ const updatePhoto = async(photos, propertyId) => {
   }
 }
 
-export { createProperty, addPhoto, getAllProperties, deleteProperty, updateProperty, updatePhoto }
+const getProperty = async(slug) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${slug}`, {
+      method: 'GET'
+    })
+    return res.json()
+  } catch (err) {
+    throw err
+  }
+}
+
+export { createProperty, addPhoto, getAllProperties, deleteProperty, updateProperty, updatePhoto, getProperty }

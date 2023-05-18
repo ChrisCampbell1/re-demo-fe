@@ -1,5 +1,5 @@
 // npm modules
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 // components
@@ -15,6 +15,20 @@ import styles from './NewPropertyForm.module.css'
 
 
 export default function NewPropertyForm() {
+  const [slugs, setSlugs] = useState([])
+
+  useEffect(() => {
+    const fetchSlugs = async () => {
+      const properties = await propertyService.getAllProperties()
+      const slugs = []
+      properties.forEach((property) => {
+        slugs.push(property.slug)
+      })
+      setSlugs(slugs)
+    }
+    fetchSlugs()
+  }, [])
+  
   const [formData, setFormData] = useState({
     mlsId: '',
     address: '',
@@ -43,12 +57,40 @@ export default function NewPropertyForm() {
     setFormData({ ...formData, featured: !formData.featured })
   }
 
+  // const validateKey = (e) => {
+  //   console.log(e)
+  //   let key  = e.nativeEvent.which || e.nativeEvent.keyCode || 0;
+  //   if((key >= 65 && key <= 92) || (key >= 97 && key <= 124) || (key = 8)) {
+  //     setFormData({ ...formData, slug: formData.slug + e.nativeEvent.key })
+  //   } else return
+  // }
+
+  // const format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
+  const format = /[ `!@#$%^&*()_+\=\[\]{};':"\\|,.<>\/?~]/
+
+  const validateSlug = () => {
+    if(formData.slug.match(format)){
+      return true
+    } else {
+      return false
+    }
+  }
+
   const handleChangePhoto = (e) => {
     setPhotoData(e.target.files)
   }
 
   const handleSubmit = async(e) => {
     e.preventDefault()
+    if(validateSlug()){
+      window.alert("Sharable link can only include letters, numbers and '-'")
+      return
+    }
+    const slug = formData.slug
+    if(slugs.includes(slug)){
+      window.alert("A listing already exists with this address, please double check the address you entered.")
+      return
+    }
     const property = await propertyService.createProperty(formData)
     propertyService.addPhoto(photoData, property._id)
     navigate('/listings')

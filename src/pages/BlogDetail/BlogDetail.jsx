@@ -21,7 +21,6 @@ export default function BlogDetail({ user }) {
   const location = useLocation()
   // const blog = location.state
   const slug = location.pathname.slice(6)
-  console.log(slug)
   const [blog, setBlog] = useState(null)
 
   useEffect(() => {

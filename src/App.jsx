@@ -32,6 +32,8 @@ import HorizontalNavBar from './components/HorizontalNavBar/HorizontalNavBar'
 // services
 import * as authService from './services/authService'
 import * as neighborhoodService from './services/neighborhoodService'
+import * as propertyService from './services/propertyService'
+
 
 // styles
 import './App.css'
@@ -39,6 +41,7 @@ import './App.css'
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [neighborhoods, setNeighborhoods] = useState(null)
+  const [properties, setProperties] = useState(null)
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -59,6 +62,15 @@ const App = () => {
     fetchNeighborhoods()
   }, [])
 
+  useEffect(() => {
+    const fetchProperties = async() => {
+      const properties = await propertyService.getAllProperties()
+      const featured = properties.filter((property) => property.featured === true)
+      setProperties(featured)
+    }
+    fetchProperties()
+  }, [])  
+
   return (
     <>
       <HorizontalNavBar
@@ -67,7 +79,13 @@ const App = () => {
         neighborhoods={neighborhoods}
       />
       <Routes>
-        <Route path="/" element={<Landing user={user} />} />
+        <Route 
+          path="/" 
+          element={<Landing
+            user={user} 
+            properties={properties}
+          />} 
+        />
         <Route
           path="/signup"
           element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
@@ -153,7 +171,10 @@ const App = () => {
           path="/listing/edit/:id"
           element={
             <ProtectedRoute user={user}>
-              <EditProperty />
+              <EditProperty 
+                properties={properties}
+                setProperties={setProperties}
+              />
             </ProtectedRoute>
           }
         />

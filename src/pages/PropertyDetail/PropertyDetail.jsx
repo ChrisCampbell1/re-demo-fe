@@ -1,6 +1,6 @@
 // npm modules
 import { useLocation, Link, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 // components
 
@@ -19,7 +19,18 @@ export default function PropertyDetail({ user }) {
   const navigate = useNavigate()
   
   const location = useLocation()
-  const property = location.state
+  const slug = location.pathname.slice(9)
+
+  // const property = location.state
+  const [property, setProperty] = useState(null)
+
+  useEffect(() => {
+    const getProperty = async (slug) => {
+      const property = await propertyService.getProperty(slug)
+      setProperty(property[0])
+    }
+    getProperty(slug)
+  },[location])
 
   const [image, setImage] = useState(0)
 
@@ -33,37 +44,46 @@ export default function PropertyDetail({ user }) {
     navigate(`/listings`)
   }
 
-  return (
-    <main className={styles.container}>
-      <div className={styles.listing}>
-        <h1>{property.address} - {property.status}</h1>
-        <h2>${property.price.toLocaleString()}</h2>
-        <Link to={`/listings`}>
-          <h4>All Listings</h4>
-        </Link>
-        <img src={property.photos[image]} alt={`${property.address}`} id={styles.mainPhoto} />
-        <div className={styles.thumbnailContainer}>
-          {property.photos.map((photo, idx) =>
-            <img src={photo} alt={`${property.address} ${idx}`} key={idx} id={idx} onClick={handleImageClick} />
-          )}
-        </div>
-            <p>Beds: {property.beds} | Baths: {property.baths} | Square Feet: {property.squareFeet}</p>
-            <Link to={`/contact`} className={styles.contactBtn} state={property}>Request Info</Link>
-        <p>{property.description}</p>
-        <p>Listed by {property.listingBrokerage}</p>
-        {user &&
-          <div className={styles.buttons}>
-            <Link className={styles.btn} to={`/listing/edit/${property._id}`} state={property}>Edit Listing</Link>
-            <button
-              type='button'
-              className={styles.delete}
-              onClick={() => handleDeleteClick(property._id)}
-            >
-              Delete Listing
-            </button>
+  if(property) {
+    return (
+      <main className={styles.container}>
+        <div className={styles.listing}>
+          <h1>{property.address} - {property.status}</h1>
+          <h2>${property.price.toLocaleString()}</h2>
+          <Link to={`/listings`}>
+            <h4>All Listings</h4>
+          </Link>
+          <img src={property.photos[image]} alt={`${property.address}`} id={styles.mainPhoto} />
+          <div className={styles.thumbnailContainer}>
+            {property.photos.map((photo, idx) =>
+              <img src={photo} alt={`${property.address} ${idx}`} key={idx} id={idx} onClick={handleImageClick} />
+            )}
           </div>
-        }
-      </div>
+              <p>Beds: {property.beds} | Baths: {property.baths} | Square Feet: {property.squareFeet}</p>
+              <Link to={`/contact`} className={styles.contactBtn} state={property}>Request Info</Link>
+          <p>{property.description}</p>
+          <p>Listed by {property.listingBrokerage}</p>
+          {user &&
+            <div className={styles.buttons}>
+              <Link className={styles.btn} to={`/listing/edit/${property._id}`} state={property}>Edit Listing</Link>
+              <button
+                type='button'
+                className={styles.delete}
+                onClick={() => handleDeleteClick(property._id)}
+              >
+                Delete Listing
+              </button>
+            </div>
+          }
+        </div>
+      </main>
+    )
+  } else {
+    return (
+      <main className={styles.container}>
+      <h1 className={styles.loading}>Loading...</h1>
     </main>
-  )
+    )
+  }
+
 }

@@ -16,17 +16,17 @@ import * as propertyService from '../../services/propertyService'
 import styles from './Landing.module.css'
 import headshot from '../../assets/photos/headshot.jpg'
 
-const Landing = ({ user }) => {
-  const [properties, setProperties] = useState(null)
+const Landing = ({ user, properties }) => {
+  // const [properties, setProperties] = useState(null)
 
-  useEffect(() => {
-    const fetchProperties = async() => {
-      const properties = await propertyService.getAllProperties()
-      const featured = properties.filter((property) => property.featured === true)
-      setProperties(featured)
-    }
-    fetchProperties()
-  }, [])  
+  // useEffect(() => {
+  //   const fetchProperties = async() => {
+  //     const properties = await propertyService.getAllProperties()
+  //     const featured = properties.filter((property) => property.featured === true)
+  //     setProperties(featured)
+  //   }
+  //   fetchProperties()
+  // }, [])  
 
   return (
     <main className={styles.container}>

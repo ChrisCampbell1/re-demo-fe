@@ -44,7 +44,7 @@ export default function Blog({ user }) {
         )
       :
         <>
-        <h3>Loading Posts...</h3>
+        <h1>Loading Posts...</h1>
         </>
       }
     </main>

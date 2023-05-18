@@ -13,14 +13,14 @@ import styles from './EditProperty.module.css'
 // component
 
 
-export default function EditProperty() {
+export default function EditProperty({ properties, setProperties }) {
   const location = useLocation()
   const property = location.state
   
   return (
     <main className={styles.container}>
       <h1>Edit Listing</h1>
-      <EditPropertyForm property={property}/>
+      <EditPropertyForm property={property} properties={properties} setProperties={setProperties}/>
     </main>
   )
 }

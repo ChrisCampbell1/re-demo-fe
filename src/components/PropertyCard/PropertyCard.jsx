@@ -17,7 +17,7 @@ export default function PropertyCard({ property, user, handleDeleteClick }) {
   
   return (
     <div className={styles.container}>
-          <Link to={`/listing/${property._id}`} state={property} style={{ textDecoration: 'none' }}>
+          <Link to={`/listing/${property.slug}`} state={property} style={{ textDecoration: 'none' }}>
           <div className={styles.bg}>
             <img src={property.photos[0]} alt={property.address} />
           </div>
