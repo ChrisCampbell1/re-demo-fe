@@ -10,6 +10,10 @@
 
 }
 
+.container select {
+  color: black;
+}
+
 .container .inputContainer {
   display: flex;
   flex-direction: column;

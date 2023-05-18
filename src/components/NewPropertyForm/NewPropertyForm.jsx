@@ -57,15 +57,6 @@ export default function NewPropertyForm() {
     setFormData({ ...formData, featured: !formData.featured })
   }
 
-  // const validateKey = (e) => {
-  //   console.log(e)
-  //   let key  = e.nativeEvent.which || e.nativeEvent.keyCode || 0;
-  //   if((key >= 65 && key <= 92) || (key >= 97 && key <= 124) || (key = 8)) {
-  //     setFormData({ ...formData, slug: formData.slug + e.nativeEvent.key })
-  //   } else return
-  // }
-
-  // const format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
   const format = /[ `!@#$%^&*()_+\=\[\]{};':"\\|,.<>\/?~]/
 
   const validateSlug = () => {
@@ -109,6 +100,7 @@ export default function NewPropertyForm() {
           name="mlsId"
           id="mlsId"
           onChange={handleChange}
+          required
         />
       </div>
       <div className={styles.inputContainer}>
@@ -118,6 +110,7 @@ export default function NewPropertyForm() {
           name="address"
           id="address"
           onChange={handleChange}
+          required
         />
       </div>
       <div className={styles.inputContainer}>
@@ -128,6 +121,7 @@ export default function NewPropertyForm() {
           id="slug"
           onChange={handleChange}
           placeholder="what do you want after the / in your shareable url? e.g. 123-Main"
+          required
         />
       </div>
       <div className={styles.inputContainer}>
@@ -138,6 +132,7 @@ export default function NewPropertyForm() {
           cols="30"
           rows="6"
           onChange={handleChange}
+          required
         ></textarea>
       </div>
       <div className={styles.inputContainer}>
@@ -147,6 +142,7 @@ export default function NewPropertyForm() {
           name="beds"
           id="beds"
           onChange={handleChange}
+          required
         />
       </div>
       <div className={styles.inputContainer}>
@@ -157,6 +153,7 @@ export default function NewPropertyForm() {
           id="baths"
           step={.5}
           onChange={handleChange}
+          required
         />
       </div>
       <div className={styles.inputContainer}>
@@ -166,6 +163,7 @@ export default function NewPropertyForm() {
           name="squareFeet"
           id="squareFeet"
           onChange={handleChange}
+          required
         />
       </div>
       <div className={styles.inputContainer}>
@@ -175,6 +173,7 @@ export default function NewPropertyForm() {
           name="price"
           id="price"
           onChange={handleChange}
+          required
         />
       </div>
       <div className={styles.inputContainer}>
@@ -197,6 +196,7 @@ export default function NewPropertyForm() {
           name="mlsLink"
           id="mlsLink"
           onChange={handleChange}
+          required
         />
       </div>
       <div className={styles.inputContainer}>
@@ -218,6 +218,7 @@ export default function NewPropertyForm() {
           name="listingBrokerage"
           id="listingBrokerage"
           onChange={handleChange}
+          required
         />
       </div>
       <div className={styles.inputContainerCheck}>
@@ -243,6 +244,7 @@ export default function NewPropertyForm() {
           multiple={true}
           onChange={handleChangePhoto}
           accept="image/*"
+          required
         />
       </div>
       <button type='submit'>Save Listing</button>

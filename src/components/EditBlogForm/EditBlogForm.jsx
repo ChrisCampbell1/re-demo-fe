@@ -69,9 +69,23 @@ export default function EditBlogForm({ blog }) {
     setFormData({ ...formData, tags: updatedTags })
   }
 
+  const format = /[`!@#$%^&*()_+\=\[\]{};':"\\|,.<>\/?~]/
+
+  const validateSlug = () => {
+    if(formData.title.match(format)){
+      return true
+    } else {
+      return false
+    }
+  }
+
   const handleSubmit = async(e) => {
     formData.body = convertedText
     e.preventDefault()
+    if(validateSlug()){
+      window.alert("Title can only include letters and numbers, not special characters.")
+      return
+    }
     const slug = formData.title.replaceAll(/\s/g, "-")
     if(currentSlug !== slug && slugs.includes(slug)){
       window.alert("A blog post with this title already exists, please select a unique title")
@@ -101,6 +115,7 @@ export default function EditBlogForm({ blog }) {
           id="title"
           value={formData.title}
           onChange={handleChange}
+          required
         />
       </div>
       {/* <div className={styles.inputContainer}>

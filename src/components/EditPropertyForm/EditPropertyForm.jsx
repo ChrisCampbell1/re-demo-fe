@@ -109,6 +109,7 @@ export default function EditPropertyForm({ property, properties, setProperties }
           id="mlsId"
           onChange={handleChange}
           value={formData.mlsId}
+          required
         />
       </div>
       <div className={styles.inputContainer}>
@@ -119,6 +120,7 @@ export default function EditPropertyForm({ property, properties, setProperties }
           id="address"
           onChange={handleChange}
           value={formData.address}
+          required
         />
       </div>
       <div className={styles.inputContainer}>
@@ -130,6 +132,7 @@ export default function EditPropertyForm({ property, properties, setProperties }
           onChange={handleChange}
           placeholder="what do you want after the / in your shareable url? e.g. 123-Main"
           value={formData.slug}
+          required
         />
       </div>
       <div className={styles.inputContainer}>
@@ -141,6 +144,7 @@ export default function EditPropertyForm({ property, properties, setProperties }
           rows="10"
           onChange={handleChange}
           value={formData.description}
+          required
         ></textarea>
       </div>
       <div className={styles.inputContainer}>
@@ -151,6 +155,7 @@ export default function EditPropertyForm({ property, properties, setProperties }
           id="beds"
           onChange={handleChange}
           value={formData.beds}
+          required
         />
       </div>
       <div className={styles.inputContainer}>
@@ -161,6 +166,7 @@ export default function EditPropertyForm({ property, properties, setProperties }
           id="baths"
           onChange={handleChange}
           value={formData.baths}
+          required
         />
       </div>
       <div className={styles.inputContainer}>
@@ -171,6 +177,7 @@ export default function EditPropertyForm({ property, properties, setProperties }
           id="price"
           onChange={handleChange}
           value={formData.price}
+          required
         />
       </div>
       <div className={styles.inputContainer}>
@@ -181,6 +188,7 @@ export default function EditPropertyForm({ property, properties, setProperties }
           id="squareFeet"
           onChange={handleChange}
           value={formData.squareFeet}
+          required
         />
       </div>
       <div className={styles.inputContainer}>
@@ -190,6 +198,7 @@ export default function EditPropertyForm({ property, properties, setProperties }
           id="status"
           onChange={handleChange}
           value={formData.status}
+          required
         >
           <option value="Active">Select Listing Status</option>
           <option value="Active">Active</option>
@@ -205,6 +214,7 @@ export default function EditPropertyForm({ property, properties, setProperties }
           id="mlsLink"
           onChange={handleChange}
           value={formData.mlsLink}
+          required
         />
 
       </div>
@@ -215,6 +225,7 @@ export default function EditPropertyForm({ property, properties, setProperties }
           id="type"
           onChange={handleChange}
           value={formData.type}
+          required
         >
           <option value="Buyer">Select Listing Type</option>
           <option value="Buyer">Buyer</option>
@@ -229,6 +240,7 @@ export default function EditPropertyForm({ property, properties, setProperties }
           id="listingBrokerage"
           onChange={handleChange}
           value={formData.listingBrokerage}
+          required
         />
       </div>
       <div className={styles.inputContainerCheck}>
@@ -254,6 +266,7 @@ export default function EditPropertyForm({ property, properties, setProperties }
           multiple={true}
           onChange={handleChangePhoto}
           accept="image/*"
+          required
         />
       </div>
       <button type='submit'>Save Listing</button>

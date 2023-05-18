@@ -64,8 +64,22 @@ export default function NewNeighborhoodForm({ neighborhoods, setNeighborhoods })
     setHeroData(e.target.files[0])
   }
 
+  const format = /[`!@#$%^&*()_+\=\[\]{};':"\\|,.<>\/?~]/
+
+  const validateSlug = () => {
+    if(formData.name.match(format)){
+      return true
+    } else {
+      return false
+    }
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if(validateSlug()){
+      window.alert("Neighborhood name can only include letters and numbers, not special characters.")
+      return
+    }
     const slug = formData.name.replaceAll(/\s/g, "-")
     if(slugs.includes(slug)){
       window.alert("This neighborhood page already exists, select a unique name or edit the existing neighborhood page")
@@ -93,6 +107,7 @@ export default function NewNeighborhoodForm({ neighborhoods, setNeighborhoods })
           name="name"
           id="name"
           onChange={handleChange}
+          required
         />
       </div>
       <div className={styles.inputContainer}>
@@ -103,6 +118,7 @@ export default function NewNeighborhoodForm({ neighborhoods, setNeighborhoods })
           cols="30"
           rows="6"
           onChange={handleChange}
+          required
         ></textarea>
       </div>
       <div className={styles.sideBySide}>
@@ -198,6 +214,7 @@ export default function NewNeighborhoodForm({ neighborhoods, setNeighborhoods })
           id="hero"
           onChange={handleHeroChange}
           accept="image/*"
+          required
         />
       </div>
       <div className={styles.inputContainerUpload}>
@@ -213,6 +230,7 @@ export default function NewNeighborhoodForm({ neighborhoods, setNeighborhoods })
           id="map"
           onChange={handleMapChange}
           accept="image/*"
+          required
         />
       </div>
       {/* <div className={styles.inputContainerUpload}>

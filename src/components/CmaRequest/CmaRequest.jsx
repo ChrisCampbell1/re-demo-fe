@@ -63,6 +63,7 @@ export default function CmaRequest() {
             name="name"
             id="name"
             onChange={handleChange}
+            required
           />
         </div>
         <div className={styles.inputContainer}>
@@ -72,6 +73,7 @@ export default function CmaRequest() {
             name="email"
             id="email"
             onChange={handleChange}
+            required
           />
         </div>
         </div>
@@ -93,6 +95,7 @@ export default function CmaRequest() {
               name="address1"
               id="address1"
               onChange={handleChange}
+              required
             />
           </div>
           <div className={styles.inputContainer}>

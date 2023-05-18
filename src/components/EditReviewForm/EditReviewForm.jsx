@@ -47,6 +47,7 @@ export default function EditReviewForm({ review }) {
           rows="10"
           onChange={handleChange}
           value={formData.review}
+          required
         ></textarea>
       </div>
       <div className={styles.inputContainer}>
@@ -57,6 +58,7 @@ export default function EditReviewForm({ review }) {
           id="client"
           onChange={handleChange}
           value={formData.client}
+          required
         />
       </div>
       <button>Save Review</button>

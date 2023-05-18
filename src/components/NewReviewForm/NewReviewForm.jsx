@@ -45,6 +45,7 @@ export default function NewReviewForm() {
           cols="30"
           rows="6"
           onChange={handleChange}
+          required
         ></textarea>
       </div>
       <div className={styles.inputContainer}>
@@ -54,6 +55,7 @@ export default function NewReviewForm() {
           name="client"
           id="client"
           onChange={handleChange}
+          required
         />
       </div>
       <button>Save Review</button>
