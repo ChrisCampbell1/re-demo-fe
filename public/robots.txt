@@ -1,3 +1,15 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Disallow: /signup
+Disallow: /login
+Disallow: /profiles
+Disallow: /change-password
+Disallow: /dashboard
+Disallow: /blog/edit
+Disallow: /blog/edit/$
+Disallow: /review/edit
+Disallow: /review/edit/$
+Disallow: /listing/edit
+Disallow: /listing/edit/$
+Disallow: /neighboroods/edit
+Disallow: /neighboroods/edit/$
