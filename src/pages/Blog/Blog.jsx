@@ -1,6 +1,7 @@
 // npm modules
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 
 // components
 import BlogArticle from '../../components/BlogArticle/BlogArticle'
@@ -37,6 +38,13 @@ export default function Blog({ user }) {
   
   return (
     <main className={styles.container}>
+      <Helmet>
+        <title>Real Estate Blog</title>
+        <link rel="canonical" href="/blog" />
+        <meta name='description' content="Find the latest Denver real estate information here. I post about market trends and tips for buyers and sellers."/>
+        <meta property='og:title' content='Real Estate Blog'/>
+        <meta property='og:description' content='Find the latest Denver real estate information here. I post about market trends and tips for buyers and sellers.'/>        
+      </Helmet>
       <h1>Blog</h1>
       {blogs ?
         blogs.map((blog) =>
