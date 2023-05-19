@@ -1,5 +1,7 @@
 // npm modules
 import { useState, useEffect } from 'react'
+import { Helmet } from 'react-helmet-async'
+
 
 // components
 import PropertyCard from '../../components/PropertyCard/PropertyCard'
@@ -33,7 +35,14 @@ export default function Properties({ user }) {
 
   return (
     <main className={styles.container}>
-      <h1>Listings</h1>
+      <h1>Denver Real Estate Listings</h1>
+      <Helmet>
+        <title>Denver Real Estate Listings</title>
+        <link rel="canonical" href={`/listings`} />
+        <meta name='description' content={`Real estate listings for sale in Denver Colorado`} />
+        <meta property='og:title' content='Denver Real Estate Listings' />
+        <meta property='og:description' content={`Real estate listings for sale in Denver Colorado`} />
+      </Helmet>
       {properties ?
       <div className={styles.propertyContainer}>
         {properties.map((property) => 

@@ -201,7 +201,11 @@ const App = () => {
             <Route
               path="/neighborhoods"
               element={
-                <Neighborhoods user={user} />
+                <Neighborhoods
+                  user={user} 
+                  neighborhoods={neighborhoods}
+                  setNeighborhoods={setNeighborhoods}
+                />
               }
             />
             {neighborhoods.map((neighborhood) =>

@@ -1,6 +1,8 @@
 // npm modules
 import { useLocation, Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { Helmet } from 'react-helmet-async'
+
 
 // components
 
@@ -17,7 +19,7 @@ import styles from './PropertyDetail.module.css'
 
 export default function PropertyDetail({ user }) {
   const navigate = useNavigate()
-  
+
   const location = useLocation()
   const slug = location.pathname.slice(9)
 
@@ -30,7 +32,7 @@ export default function PropertyDetail({ user }) {
       setProperty(property[0])
     }
     getProperty(slug)
-  },[location])
+  }, [location])
 
   const [image, setImage] = useState(0)
 
@@ -39,14 +41,22 @@ export default function PropertyDetail({ user }) {
     setImage(e.target.id)
   }
 
-  const handleDeleteClick = async(id) => {
+  const handleDeleteClick = async (id) => {
     await propertyService.deleteProperty(id)
     navigate(`/listings`)
   }
 
-  if(property) {
+  if (property) {
     return (
       <main className={styles.container}>
+        <Helmet>
+          <title>{property.address}</title>
+          <link rel="canonical" href={`/listing/${slug}`} />
+          <meta name='description' content={property.description.slice(0,170)} />
+          <meta property='og:title' content={property.address} />
+          <meta property='og:description' content={property.description.slice(0,170)} />
+          <meta property='og:image' content={property.photos[0]}/>
+        </Helmet>
         <div className={styles.listing}>
           <h1>{property.address} - {property.status}</h1>
           <h2>${property.price.toLocaleString()}</h2>
@@ -59,8 +69,8 @@ export default function PropertyDetail({ user }) {
               <img src={photo} alt={`${property.address} ${idx}`} key={idx} id={idx} onClick={handleImageClick} />
             )}
           </div>
-              <p>Beds: {property.beds} | Baths: {property.baths} | Square Feet: {property.squareFeet}</p>
-              <Link to={`/contact`} className={styles.contactBtn} state={property}>Request Info</Link>
+          <p>Beds: {property.beds} | Baths: {property.baths} | Square Feet: {property.squareFeet}</p>
+          <Link to={`/contact`} className={styles.contactBtn} state={property}>Request Info</Link>
           <p>{property.description}</p>
           <p>Listed by {property.listingBrokerage}</p>
           {user &&
@@ -81,8 +91,8 @@ export default function PropertyDetail({ user }) {
   } else {
     return (
       <main className={styles.container}>
-      <h1 className={styles.loading}>Loading...</h1>
-    </main>
+        <h1 className={styles.loading}>Loading...</h1>
+      </main>
     )
   }
 

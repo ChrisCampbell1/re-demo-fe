@@ -1,5 +1,7 @@
 // npm modules
 import { useState, useEffect } from 'react'
+import { Helmet } from 'react-helmet-async'
+
 
 // components
 import ReviewCard from '../../components/ReviewCard/ReviewCard'
@@ -33,6 +35,13 @@ export default function Reviews({ user }) {
   return (
     <main className={styles.container}>
       <h1>Reviews</h1>
+      <Helmet>
+        <title>Reviews</title>
+        <link rel="canonical" href={`/reviews`} />
+        <meta name='description' content="Learn what people are saying about working with me as their Realtor" />
+        <meta property='og:title' content="Reviews" />
+        <meta property='og:description' content="Learn what people are saying about working with me as their Realtor" />
+      </Helmet>
       {reviews ?
         reviews.map((review) => 
           <ReviewCard key={review._id} review={review} user={user} handleDeleteClick={handleDeleteClick}/>
