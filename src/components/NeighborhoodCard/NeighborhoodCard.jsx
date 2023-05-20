@@ -1,6 +1,7 @@
 // npm modules
 import { Link, useNavigate } from 'react-router-dom'
-
+import { delay, motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 
 // components
 
@@ -24,8 +25,29 @@ export default function NeighborhoodCard({ neighborhood, user, setNeighborhoods,
     navigate(`/neighborhoods`)
   }
 
+  const ref = useRef(null)
+  const isInView = useInView(ref, {once: true})
+
   return (
-    <div className={styles.container}>
+    <motion.div
+      className={styles.container}
+      ref={ref}
+      animate={{
+        opacity: isInView ? 1 : 0,
+        y: isInView ? 0 : 100,
+      }}
+      initial={{
+        opacity: 0,
+        y: 100,
+
+        
+      }}
+      transition={{
+        stiffness: 100,
+        delay: .5,
+        type: "spring",
+      }}
+    >
       <div className={styles.hero}>
           <div className={styles.bg}>
             <img src={neighborhood.hero} alt={`hero of ${neighborhood.name}`} />
@@ -42,6 +64,6 @@ export default function NeighborhoodCard({ neighborhood, user, setNeighborhoods,
           }
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }

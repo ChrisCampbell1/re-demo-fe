@@ -30,9 +30,9 @@ const Landing = ({ user, properties }) => {
 
   return (
     <main className={styles.container}>
-      {/* <HeroStatic /> */}
+      <HeroStatic />
       {/* <HeroVideo /> */}
-      <HeroMulti />
+      {/* <HeroMulti /> */}
       <div className={styles.about}>
         <div className={styles.headshot}>
           <img src={headshot} alt="headshot" />
@@ -49,8 +49,8 @@ const Landing = ({ user, properties }) => {
         <>
           <h1>Featured Listings</h1>
           <div className={styles.listingContainer}>
-            {properties.map((property) =>
-              <PropertyCard property={property} key={property._id} user={user}/>
+            {properties.map((property, idx) =>
+              <PropertyCard property={property} key={property._id} user={user} idx={idx}/>
             )}
           </div>
         </>

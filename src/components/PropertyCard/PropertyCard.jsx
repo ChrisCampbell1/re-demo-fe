@@ -1,5 +1,7 @@
 // npm modules
 import { Link } from 'react-router-dom'
+import { delay, motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 
 // components
 
@@ -13,10 +15,36 @@ import styles from './PropertyCard.module.css'
 // component
 
 
-export default function PropertyCard({ property, user, handleDeleteClick }) {
+export default function PropertyCard({ property, user, handleDeleteClick, idx }) {
+  const ref = useRef(null)
+  const isInView = useInView(ref)
+
 
   return (
-    <div className={styles.container}>
+    <motion.div
+      className={styles.container}
+      ref={ref}
+      animate={{
+        // opacity: 1,
+        // y: 0,
+        opacity: isInView ? 1 : 0,
+        y: isInView ? 0 : 100,
+        // scale: 1
+      }}
+      initial={{
+        opacity: 0,
+        y: 100,
+        // scale: .5
+        
+      }}
+      transition={{
+        // duration: 2,
+        stiffness: 100,
+        delay: 1 + .5 * idx,
+        type: "spring",
+        // damping: 100,
+      }}
+    >
       <Link to={`/listing/${property.slug}`} state={property} style={{ textDecoration: 'none' }}>
         <div className={styles.bg}>
           <img src={property.photos[0]} alt={property.address} />
@@ -58,6 +86,6 @@ export default function PropertyCard({ property, user, handleDeleteClick }) {
           </button>
         </div>
       }
-    </div>
+    </motion.div>
   )
 }

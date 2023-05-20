@@ -45,8 +45,8 @@ export default function Properties({ user }) {
       </Helmet>
       {properties ?
       <div className={styles.propertyContainer}>
-        {properties.map((property) => 
-          <PropertyCard key={property._id} property={property} user={user} handleDeleteClick={handleDeleteClick}/>
+        {properties.map((property, idx) => 
+          <PropertyCard key={property._id} property={property} user={user} handleDeleteClick={handleDeleteClick} idx={idx}/>
         )}
       </div>
       :
