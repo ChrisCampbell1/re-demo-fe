@@ -1,6 +1,7 @@
 // npm modules
 import { NavLink, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { motion } from "framer-motion"
 
 
 // components
@@ -48,6 +49,7 @@ export default function HorizontalNavBar({ user, handleLogout, neighborhoods }) 
   useEffect(() => {
     setDisplay(false)
   }, [location])
+
 
   return (
     <>
@@ -211,7 +213,9 @@ export default function HorizontalNavBar({ user, handleLogout, neighborhoods }) 
           </button>
         </div>
         {display &&
-          <div className={styles.mobileLinks}>
+          <div
+            className={styles.mobileLinks}
+          >
             {user ?
               <ul>
                 <li><NavLink to="/">Home</NavLink></li>
