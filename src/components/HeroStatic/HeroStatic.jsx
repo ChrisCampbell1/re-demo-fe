@@ -1,6 +1,7 @@
 // npm modules
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { Link } from 'react-router-dom'
 
 // components
 
@@ -36,8 +37,9 @@ export default function HeroStatic() {
           duration: 1
         }}
       >
-        <h1>Your Cap Hill Specialist</h1>
+        <h1>Your Capitol Hill Specialist</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem delectus commodi totam dolore mollitia veritatis doloribus, quia exercitationem amet, dignissimos molestiae provident dolores laudantium eligendi pariatur enim a quibusdam. Iste.</p>
+        <Link to={`/contact`}>Let's Chat</Link>
       </motion.div>
       </div>
 

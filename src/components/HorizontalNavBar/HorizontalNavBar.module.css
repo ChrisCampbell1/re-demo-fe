@@ -12,6 +12,7 @@
   /* backdrop-filter: brightness(60%); */
   /* background-color: rgb(24, 24, 24); */
   background-color: rgba(24, 24, 24, 0.6);
+  background-color: unset;
 
 }
 
@@ -108,6 +109,7 @@
   padding: 1rem;
   /* background-color: blanchedalmond; */
   background-color: rgba(24, 24, 24, 0.6);
+  background-color: unset;
   /* backdrop-filter: brightness(60%); */
   /* width: 174px; */
   margin: 0;
