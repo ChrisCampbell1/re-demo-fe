@@ -114,7 +114,7 @@ export default function AddOns() {
         </div>
       }
       <h1>Add Ons</h1>
-      <h2>CMA Request with minimalist design</h2>
+      <h2>CMA Request</h2>
       <CmaRequest />
       <h2>Protected Download with Signup Modal</h2>
       <ProtectedDownload swapSignup={swapSignup} />
