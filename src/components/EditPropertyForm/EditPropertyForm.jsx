@@ -266,7 +266,6 @@ export default function EditPropertyForm({ property, properties, setProperties }
           multiple={true}
           onChange={handleChangePhoto}
           accept="image/*"
-          required
         />
       </div>
       <button type='submit'>Save Listing</button>

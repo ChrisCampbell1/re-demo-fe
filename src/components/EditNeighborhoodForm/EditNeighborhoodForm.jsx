@@ -229,7 +229,6 @@ export default function EditNeighborhoodForm({ neighborhood, setNeighborhoods, n
           id="hero"
           onChange={handleHeroChange}
           accept="image/*"
-          required
         />
       </div>
       <div className={styles.inputContainerUpload}>
@@ -245,7 +244,6 @@ export default function EditNeighborhoodForm({ neighborhood, setNeighborhoods, n
           id="map"
           onChange={handleMapChange}
           accept="image/*"
-          required
         />
       </div>
       {/* <div className={styles.inputContainerUpload}>
