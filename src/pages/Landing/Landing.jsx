@@ -1,15 +1,15 @@
 // npm modules
-import { useState, useEffect } from 'react'
+// import { useState, useEffect } from 'react'
 
 // components
-import HeroStatic from '../../components/HeroStatic/HeroStatic'
-import HeroVideo from '../../components/HeroVideo/HeroVideo'
+// import HeroStatic from '../../components/HeroStatic/HeroStatic'
+// import HeroVideo from '../../components/HeroVideo/HeroVideo'
 import HeroMulti from '../../components/HeroMulti/HeroMulti'
 import PropertyCard from '../../components/PropertyCard/PropertyCard'
 import ContactForm from '../../components/ContactForm/ContactForm'
 
 // services
-import * as propertyService from '../../services/propertyService'
+// import * as propertyService from '../../services/propertyService'
 
 
 // styles and assets
