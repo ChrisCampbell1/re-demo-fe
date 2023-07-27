@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom'
 import * as reviewService from '../../services/reviewService'
 
 // styles
-import styles from './NewReviewForm.module.css'
+import styles from './NewReviewForm2.module.css'
 
 // component
 
