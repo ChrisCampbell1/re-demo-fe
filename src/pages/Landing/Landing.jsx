@@ -41,7 +41,6 @@ const Landing = ({ user, properties }) => {
           <h2>About Me</h2>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae magnam deleniti maiores facilis aliquid omnis est aperiam explicabo? Eius facilis nulla totam debitis tempora distinctio ullam cumque iusto nesciunt facere.</p>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae magnam deleniti maiores facilis aliquid omnis est aperiam explicabo? Eius facilis nulla totam debitis tempora distinctio ullam cumque iusto nesciunt facere.</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae magnam deleniti maiores facilis aliquid omnis est aperiam explicabo? Eius facilis nulla totam debitis tempora distinctio ullam cumque iusto nesciunt facere.</p>
         </div>
       </div>
       <div className={styles.listings}>
